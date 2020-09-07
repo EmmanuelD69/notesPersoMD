@@ -1,6 +1,16 @@
 # Asynchrone Javascript And Xml - AJAX
 
+## Rappel wiki:
+
+> Les applications Web classiques permettent aux utilisateurs d'effectuer des choix (suivre un lien, remplir et valider un formulaire) à la suite de quoi une requête est envoyée au serveur Web. Le serveur répondra à la requête en envoyant une page Web. Une page web est envoyée en réponse à chaque manipulation, et la transmission de la page web entre le serveur et le navigateur provoque un temps de latence d'autant plus grand que la page est riche en contenu et en présentation (tableaux, couleurs, polices de caractères…).
+
+> Dans les applications Web en Ajax, une page Web est envoyée une seule fois. La page envoyée contiendra un programme écrit en langage JavaScript. L'utilisation de JavaScript permet de provoquer des requêtes lors de manipulation qui autrement n'en provoqueraient pas (du fait des mécanismes utilisés).
+
+> En utilisant Ajax, le dialogue entre le navigateur et le serveur se déroule la plupart du temps de la manière suivante : un programme écrit en langage de programmation JavaScript, incorporé dans une page web, est exécuté par le navigateur. Celui-ci envoie en arrière-plan des demandes au serveur Web, puis modifie le contenu de la page actuellement affichée par le navigateur Web en fonction du résultat reçu du serveur, évitant ainsi la transmission et l'affichage d'une nouvelle page complète.
+
 ## Qu'est ce que le Javascript Asynchrone?
+
+> le navigateur Web continue d'exécuter le programme JavaScript alors que la demande est partie, il n'attend pas la réponse envoyée par le serveur Web et l'utilisateur peut continuer à effectuer des manipulations pendant ce temps
 
 **Synchrone** = une action se déroulant _en direct_, quelque chose qui se passe en même temps, une action synchrone.
 
@@ -54,7 +64,7 @@ Javascript est très mauvais pour faire du multitasking, il lit le code ligne pa
 
     console.log('end');
 
-4- Javascript execute the _setTimout_ function.
+4- Javascript execute the _setTimout_ function
 
 _console logs:_
 
