@@ -76,6 +76,70 @@ _console logs:_
 
 Il existe d'autres actions asynchrones comme par exemple les
 
-**EVENTLISTENERS**
+_EVENTLISTENERS_
 
 Lorsqu'on place un event listener sur un élément, javascript confie la gestion de celui ci au navigateur. il ne va pas attendre qu'une action se produise pour continuer de lire le code, il va transférer la charge de cette action au browser qui va patientez qu'un clic s'effectue avant d'en informer javascript pour executer le code de la fonction contenant l'event.
+
+---
+
+### Example pratique:
+
+Prenons l'example simple d'affichage de l'email d'un utilisateur avec un fonction de login.
+
+Dans une logique synchrone on rédigerai notre code ainsi:
+
+    console.log("Start");
+
+    function loginUser(email, password){
+        setTimeout(() => {
+        console.log("now we get the data");
+        return {userEmail: email};
+        },2000);
+    }
+
+    const user = loginUser("emmanueldevfr@gmail.com", 123456789);
+    console.log(user);
+    console.log("End");
+
+Mais dans la pratique on obtient ces logs:
+
+    Start
+    undefined
+    End
+    now we get the data
+
+setTimeout est une fonction asynchone, elle est envoyé au navigateur pour la durée de la temporisation (2000ms) avant d'être renvoyé à Javascript. Pendant ce temps, Javascript enchaine la lecture du code.
+
+---
+
+#### décomposition de la lecture du code par Javascript:
+
+1- Javascript execute le console.log
+
+    console.log('Start');
+
+2- Javascript lit de manière passive la fonction _setTimeout_ et l'envoi vers le navigateur pour la durée de la tempo pour pouvoir poursuivre sa lecture du code.
+
+    function loginUser(email, password){
+        setTimeout(() => {
+        console.log("now we get the data");
+        return {userEmail: email};
+        },2000);
+    }
+
+3- Javascript lit la variable user qui fait appel à la fonction _loginUser_
+
+    const user = loginUser("emmanueldevfr@gmail.com", 123456789);
+
+4- Javascript execute le console.log qui demande d'afficher le contenu de la variable _user_.
+
+L'Execution est lancée, elle ne prend qu'une fraction de temps à démarrer.
+A cet instant précis, la variable ne peux pas avoir connaissance du résultat de la fonction car celle çi a été transférée au navigateur pour 2 secondes, alors que la lecture du code de notre script par javascript ne prend peut être qu'une ou deux millisecondes. On a donc à cet instant T une variable avec un contenu **undefined**.
+
+    console.log('user');
+
+5- Javascript execute le console.log
+
+    console.log('End');
+
+6- Le navigateur, après 2 secondes, renvoi le résultat du code contenu dans la fonction asynchrone _setTimeout_.
