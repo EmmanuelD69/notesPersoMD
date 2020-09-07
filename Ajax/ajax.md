@@ -10,11 +10,13 @@
 
 ## Qu'est ce que le Javascript Asynchrone?
 
-> le navigateur Web continue d'exécuter le programme JavaScript alors que la demande est partie, il n'attend pas la réponse envoyée par le serveur Web et l'utilisateur peut continuer à effectuer des manipulations pendant ce temps
-
 **Synchrone** = une action se déroulant _en direct_, quelque chose qui se passe en même temps, une action synchrone.
 
 **Asynchrone** = une action qui se déroule _en différé_, quelque chose qui se passe après une période de temps, un action asynchrone.
+
+> En ajax, comme le nom l'indique, les demandes sont effectuées de manière asynchrone:
+
+> Le navigateur Web continue d'exécuter le programme JavaScript alors que la demande est partie, il n'attend pas la réponse envoyée par le serveur Web et l'utilisateur peut continuer à effectuer des manipulations pendant ce temps.
 
 ### Synchrone code example:
 
