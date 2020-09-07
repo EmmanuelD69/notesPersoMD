@@ -6,13 +6,13 @@
 
 **Asynchrone** = une action qui se déroule _en différé_, quelque chose qui se passe après une période de temps, un action asynchrone.
 
-### Sync code example:
+### Synchrone code example:
 
 1- Javascript read the function and memorize it
 
     function synchrone() {
         console.log('we are in another function');
-        onsole.log('do some stuff');
+        console.log('do some stuff');
     }
 
 2- Javascript execute the console.log
@@ -27,9 +27,43 @@
 
     console.log('end');
 
-_console log:_
+_console logs:_
 
      start
      we are in another function
      do some stuff
      end
+
+### Asynchrone code example:
+
+Nous allons utiliser la fonction _"setTimeout"_ qui permet de mettre en place une temporisation au bout de laquelle les actions qu'elle contient vont s'exécuter.
+
+Javascript est très mauvais pour faire du multitasking, il lit le code ligne par ligne et exécute une action à la fois. lorsqu'il tombe sur une action asynchrone, plutot que de patienter le temps indiqué dans la fonction "setTimeout" il va transférer celle çi au browser(navigateur), qui contient un système de gestion (Web API - zone de stockage temporaire) de ces fonctions asynchrone, et poursuivre l'exécution du code. Lorsque la temporisation s'achève, le navigateur renvoi la fonction asynchrone pour que javascript puisse l'exécuter.
+
+1- Javascript execute the console.log
+
+    console.log('start');
+
+2- Javascript read the _setTimout_ function and transfer it to the web API because a timer (asynchrone action) has been found.
+
+    setTimeout(() => {
+        console.log('a timeout of 2 seconds happened');
+    }, 2000);
+
+3- Javascript execute the console.log
+
+    console.log('end');
+
+4- Javascript execute the _setTimout_ function.
+
+_console logs:_
+
+    start
+    end
+    a timeout of 2 seconds happened
+
+Il existe d'autres actions asynchrones comme par exemple les
+
+**EVENTLISTENERS**
+
+Lorsqu'on place un event listener sur un élément, javascript confie la gestion de celui ci au navigateur. il ne va pas attendre qu'une action se produise pour continuer de lire le code, il va transférer la charge de cette action au browser qui va patientez qu'un clic s'effectue avant d'en informer javascript pour executer le code de la fonction contenant l'event.
