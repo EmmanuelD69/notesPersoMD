@@ -84,7 +84,7 @@ Lorsqu'on place un event listener sur un élément, javascript confie la gestion
 
 ### Example pratique:
 
-Prenons l'example simple d'affichage de l'email d'un utilisateur avec un fonction de login.
+Prenons l'example simple d'affichage de l'email d'un utilisateur avec un fonction login.
 
 Dans une logique synchrone on rédigerai notre code ainsi:
 
@@ -142,4 +142,30 @@ A cet instant précis, la variable ne peux pas avoir connaissance du résultat d
 
     console.log('End');
 
-6- Le navigateur, après 2 secondes, renvoi le résultat du code contenu dans la fonction asynchrone _setTimeout_.
+6- Le navigateur, après 2 secondes, exécute le code contenu dans la fonction asynchrone _setTimeout_.
+
+On est donc face à un problème... comment faire pour avoir accès aux Données après que la tempo s'est achevée?
+
+---
+
+Pour pallier au problème de l'abscence de valeur définie au moment de la lecture de la variable, on va introduire une fonction callback qui sera exécutée lorsque la temporisation s'achèvera.
+
+**Rappel fonction callback:**
+
+> C'est une fonction qui est utilisée à un moment précis,
+> déterminé par une autre fonction (high order function)
+> ou par une action précise (addEventListener / setTimeout / setInterval / etc...).
+> Pour résumer c'est une fonction que l'on passe en paramètre d'une autre fonction.
+
+Dans notre cas actuel, le code ressemblera à:
+
+    function loginUser(email, password, callbackFn){
+        setTimeout(() => {
+        console.log("now we get the data");
+        callbackFn ({userEmail: email});
+        },2000);
+    }
+
+    const user = loginUser("emmanueldevfr@gmail.com", 123456789, user => {
+        console.log(user);
+    });
