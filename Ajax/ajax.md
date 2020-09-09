@@ -148,7 +148,7 @@ On est donc face à un problème... comment faire pour avoir accès aux Données
 
 ---
 
-Pour pallier au problème de l'abscence de valeur définie au moment de la lecture de la variable, on va introduire une fonction callback qui sera exécutée lorsque la temporisation s'achèvera.
+Pour pallier au problème de l'abscence de valeur définie au moment de la lecture de la variable, on va introduire une fonction callback qui sera exécutée lorsque la temporisation s'achèvera. On aura donc à faire à un comportement Asynchrone (en différé) de l'exécution d'une partie du code.
 
 **Rappel fonction callback:**
 
@@ -159,13 +159,62 @@ Pour pallier au problème de l'abscence de valeur définie au moment de la lectu
 
 Dans notre cas actuel, le code ressemblera à:
 
-    function loginUser(email, password, callbackFn){
+    console.log('Start');
+
+    function loginUser(email, password, fonctionCallback){
         setTimeout(() => {
         console.log("now we get the data");
-        callbackFn ({userEmail: email});
+        fonctionCallback ({userEmail: email});
         },2000);
     }
 
-    const user = loginUser("emmanueldevfr@gmail.com", 123456789, user => {
-        console.log(user);
+    const user = loginUser("emmanueldevfr@gmail.com", 123456789, (parametresDeLaFonctionCallback) => {
+        console.log(parametresDeLaFonctionCallback);
     });
+
+    console.log('End');
+
+Ici notre fonction callback est définie sous la forme d'une fonction anonyme dans la variable **user** qui va déclencher l'appel vers la fonction _loginUser_ (fonction de haut rang).
+
+Que va faire Javascript?
+
+1- Javascript execute le console.log
+
+    console.log('Start');
+
+2- Javascript lit de manière passive la fonction _loginUser_ et la mémorise dans le DOM.
+
+    function loginUser(email, password, fonctionCallback){
+        setTimeout(() => {
+        console.log("now we get the data");
+        fonctionCallback ({userEmail: email});
+        },2000);
+    }
+
+3- Javascript lit la variable user qui déclenche la fonction loginUser. Le call stack prend en charge loginUser et s'aperçoit qu'il y'a une méthode setTimeout à l'intérieur, ce qui défini une temporisation que javascript ne va pas gérer, il a besoin de poursuivre la lecture du code et décide donc d'envoyer loginUser vers le navigateur qui va la stocker temporairement avec son API Web pour la durée définie dans la fonction setTimeout (2000ms).
+
+    const user = loginUser("emmanueldevfr@gmail.com", 123456789,(parametresDeLaFonctionCallback) => {
+        console.log(parametresDeLaFonctionCallback);
+    });
+
+<span style="color:red"> **Ici notre fonction callback a pour but de demander l'affichage en console de son contenu situé entre paranthèse, ce qui se trouve en paramètre de la fonction callback.**</span>
+
+j'aurais tout aussi bien pu indiquer user, toto, tata, etc... en paramètre de la fonction anonyme mais pour plus de précision et de clarté j'ai utilisé "parametresDeLaFonctionCallback" pour bien indiquer que le console log va afficher ce qui se trouve entre paranthèse de la fonction callback se trouvant dans la fonction setTimeout.
+
+4- Javascript execute le console.log
+
+    console.log('End');
+
+5- La temporisation arrive a son terme au bout des 2 secondes et l'API Web renvoi l'exécution de la fonction loginUser à Javascript. S'enchaine alors la lecture des instructions contenues dans la fonction setTimeout:
+
+    console.log("now we get the data");
+    fonctionCallback ({userEmail: email});
+
+Résultat en console:
+
+    Start
+    End
+    now we get the data
+    {userEmail: "emmanueldevfr@gmail.com"}
+
+Ps: c'est un objet qui se trouve en paramètre de la fonction callstack.
