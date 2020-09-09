@@ -112,7 +112,7 @@ setTimeout est une fonction asynchone, elle est envoyé au navigateur pour la du
 
 ---
 
-#### décomposition de la lecture du code par Javascript:
+**<u>Décomposition de la lecture du code par Javascript:</u>**
 
 1- Javascript execute le console.log
 
@@ -176,7 +176,7 @@ Dans notre cas actuel, le code ressemblera à:
 
 Ici notre fonction callback est définie sous la forme d'une fonction anonyme dans la variable **user** qui va déclencher l'appel vers la fonction _loginUser_ (fonction de haut rang).
 
-Que va faire Javascript?
+**<u>Que va faire Javascript?</u>**
 
 1- Javascript execute le console.log
 
@@ -218,3 +218,30 @@ Résultat en console:
     {userEmail: "emmanueldevfr@gmail.com"}
 
 Ps: c'est un objet qui se trouve en paramètre de la fonction callstack.
+
+---
+
+Dans la continuité de notre example, partons du principe que nous avons le profil d'un youtuber qui publie du contenu vidéo et l'on souhaite associer à son profil la liste des vidéos qu'il a déjà publiées.
+
+pour cela nous allons créer une fonction: **getUserVideos**
+
+    function getUserVideos(email, fonctionCallback) {
+        setTimeout(() => {
+    	fonctionCallback(['video1', 'video2', 'video3']);
+        }, 2000);
+    }
+
+Puis nous allons associer cette nouvelle fonction au profil de l'utilisateur lorsqu'il se log:
+
+    const user1 = loginUser('emmanueldevfr@gmail.com', 123456789, (userInfos) => {
+        console.log(userInfos);
+        getUserVideos(userInfos.userEmail, (videos) => {
+    	    console.log(videos);
+        });
+    });
+
+**<u>Décomposition de la variable:</u>**
+
+Lorsque Javascript va lire la variable user1, elle va exécuter la fonction loginUser en lui passant en paramètres l'adresse email de l'utilisateur, son mot de passe ainsi qu'une fonction callback qui aura pour instruction d'afficher les informations de l'utilisateur (email, password) ainsi que les vidéos associés à son compte email.
+
+Tout cela va se faire de manière asynchrone en passant par des fonctions utilisant la fonction asynchrone **setTimeout**
