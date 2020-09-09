@@ -245,3 +245,51 @@ Puis nous allons associer cette nouvelle fonction au profil de l'utilisateur lor
 Lorsque Javascript va lire la variable user1, elle va exécuter la fonction loginUser en lui passant en paramètres l'adresse email de l'utilisateur, son mot de passe ainsi qu'une fonction callback qui aura pour instruction d'afficher les informations de l'utilisateur (email, password) ainsi que les vidéos associés à son compte email.
 
 Tout cela va se faire de manière asynchrone en passant par des fonctions utilisant la fonction asynchrone **setTimeout**
+
+Résultat en console:
+
+    Start
+    End
+    now we get the data
+    {userEmail: "emmanueldevfr@gmail.com", pass: 123456789}
+    (3) ["video1", "video2", "video3"]
+
+---
+
+Allons encore plus loins et disons que nous souhaitons aussi obtenir des informations sur les vidéos comme par example le titre de la vidéo pour commencer.
+
+pour cela nous allons créer une fonction: **getUserVideosTitle**
+
+    function getUserVideosTitle(videos, fonctionCallback) {
+        setTimeout(() => {
+    	fonctionCallback([`Titre de la video ${videos}`]);
+        }, 2000);
+    }
+
+Puis nous allons associer cette nouvelle fonction au profil de l'utilisateur lorsqu'il se log:
+
+    const user1 = loginUser('emmanueldevfr@gmail.com', 123456789, (userInfos) => {
+        console.log(userInfos);
+        getUserVideos(userInfos.userEmail, (videos) => {
+    	    console.log(videos);
+            getUserVideosTitle(videos[0], title => {
+                console.log(title);
+            })
+        });
+    });
+
+Résultat en console:
+
+    Start
+    End
+    now we get the data
+    {userEmail: "emmanueldevfr@gmail.com", pass: 123456789}
+    (3) ["video1", "video2", "video3"]
+    ["Titre de la video video1"]
+
+On pourrait continuer ainsi en ajoutant le sujet de la vidéo, la durée, etc...
+Notre variable au final ressemblerai à un gros amas complexe de code en forme de pyramide et nous savons tous que par nature un développeur n'aime pas la complexité.
+
+C'est pourquoi il existe une solution beaucoup plus pratique qui fait appel à ce que l'on appel des **promesses**
+
+---
