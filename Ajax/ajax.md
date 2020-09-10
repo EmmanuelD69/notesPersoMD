@@ -290,8 +290,41 @@ Résultat en console:
     ["Titre de la video video1"]
 
 On pourrait continuer ainsi en ajoutant le sujet de la vidéo, la durée, etc...
-Notre variable au final ressemblerai à un gros amas complexe de code en forme de pyramide et nous savons tous que par nature un développeur n'aime pas la complexité.
+Notre variable au final ressemblerai à un gros amas complexe de code en forme de pyramide qui enchainerai les fonctions callback à un niveau cauchemardesque (callback hell) et nous savons tous que par nature un développeur n'aime pas la complexité.
 
 C'est pourquoi il existe une solution beaucoup plus pratique qui fait appel à ce que l'on appel des **promesses**.
 
 ---
+
+## Les promesses en Javascript
+
+Une promesse en JavaScript est un objet qui représente l’état d’une opération asynchrone.
+
+Une opération asynchrone peut être dans l’un des états suivants :
+
+> Opération en cours (non terminée)
+
+> Opération terminée avec succès (promesse résolue)
+
+> Opération terminée ou plus exactement stoppée après un échec (promesse rejetée)
+
+nous allons définir une fonction dont le rôle est d’effectuer une opération asynchrone et cette fonction va, lors de son exécution, créer et renvoyer un objet Promesse.
+
+    const promesse = new Promise((resolve, reject) => {
+        //Tâche asynchrone à réaliser
+        /* Appel de resolve() si la promesse est résolue (tenue)
+        ou
+        Appel de reject() si elle est rejetée (rompue) */
+    });
+
+PS: En pratique, la majorité des opérations asynchrones qu’on va vouloir réaliser en JavaScript vont déjà être pré-codées et fournies par des API. Ainsi, nous allons rarement créer nos propres promesses mais plutôt utiliser les promesses renvoyées par les fonctions de ces API.
+
+Lorsque nos fonctions asynchrones s’exécutent, elles renvoient une promesse. Cette promesse va partager les informations liées à l’opération qui vient de s’exécuter et on va pouvoir l’utiliser pour définir quoi faire en fonction du résultat qu’elle contient (en cas de succès de l’opération ou en cas d’échec).
+
+Les promesses permettent ainsi de représenter et de manipuler un résultat un évènement futur et nous permettent donc de définir à l’avance quoi faire lorsqu’une opération asynchrone est terminée, que celle-ci ait été terminée avec succès ou qu’on ait rencontré un cas d’échec.
+
+Pour le dire autrement, vous pouvez considérer qu’une valeur classique est définie et disponible dans le présent tandis qu’une valeur « promise » est une valeur qui peut déjà exister ou qui existera dans le futur.
+
+<span style="color:red">Au final, on fait une « promesse » au navigateur ou au programme exécutant notre code : on l’informe qu’on n’a pas encore le résultat de telle opération car celle-ci ne s’est pas déroulée mais que dès que l’opération sera terminée, son résultat sera disponible dans la promesse et qu’il devra alors exécuter tel ou tel code selon le résultat contenu dans cette promesse.</span>
+
+Le code à exécuter après la consommation d’une promesse va être passé sous la forme de fonction de rappel (callback function) qu’on va attacher à la promesse en question.
