@@ -127,16 +127,18 @@ setTimeout est une fonction asynchone, elle est envoyé au navigateur pour la du
         },2000);
     }
 
-3- Javascript lit la variable user qui déclenche la fonction loginUser. Le call stack prend en charge loginUser et s'aperçoit qu'il y'a une méthode setTimeout à l'intérieur, ce qui défini une temporisation que javascript ne va pas gérer, il a besoin de poursuivre la lecture du code et décide donc d'envoyer loginUser vers le navigateur qui va la stocker temporairement avec son API Web pour la durée définie dans la fonction setTimeout (2000ms).
+3- Javascript lit la variable user qui déclenche la fonction loginUser.
 
     const user = loginUser("emmanueldevfr@gmail.com", 123456789);
 
+Le call stack prend en charge loginUser et s'aperçoit qu'il y'a une méthode setTimeout à l'intérieur, ce qui défini une temporisation que javascript ne va pas gérer, il a besoin de poursuivre la lecture du code et décide donc d'envoyer loginUser vers le navigateur qui va la stocker temporairement avec son API Web pour la durée définie dans la fonction setTimeout (2000ms).
+
 4- Javascript execute le console.log qui demande d'afficher le contenu de la variable _user_.
+
+    console.log('user');
 
 L'Execution est lancée, elle ne prend qu'une fraction de temps à démarrer.
 A cet instant précis, la variable ne peux pas avoir connaissance du résultat de la fonction car celle çi a été transférée au navigateur pour 2 secondes, alors que la lecture du code de notre script par javascript ne prend peut être qu'une ou deux millisecondes. On a donc à cet instant T une variable avec un contenu **undefined**.
-
-    console.log('user');
 
 5- Javascript execute le console.log
 
@@ -144,7 +146,7 @@ A cet instant précis, la variable ne peux pas avoir connaissance du résultat d
 
 6- Le navigateur, après 2 secondes, exécute le code contenu dans la fonction asynchrone _setTimeout_.
 
-On est donc face à un problème... comment faire pour avoir accès aux Données après que la tempo s'est achevée?
+On est donc face à un problème... comment faire pour avoir accès aux données après que la tempo se soit achevé?
 
 ---
 
@@ -174,11 +176,11 @@ Dans notre cas actuel, le code ressemblera à:
 
     console.log('End');
 
-Ici notre fonction callback est définie sous la forme d'une fonction anonyme dans la variable **user** qui va déclencher l'appel vers la fonction _loginUser_ (fonction de haut rang).
+Ici notre fonction callback est définie sous la forme d'une fonction anonyme dans la variable **user**. La lecture cette variable par javascript va déclencher l'exécution de la fonction _loginUser_ (fonction de haut rang) qui prendra en paramètre, l'adresse email, le mot de passe ainsi que la fonction callback anonyme.
 
 **<u>Que va faire Javascript?</u>**
 
-1- Javascript execute le console.log
+1- Javascript exécute le console.log
 
     console.log('Start');
 
@@ -191,7 +193,7 @@ Ici notre fonction callback est définie sous la forme d'une fonction anonyme da
         },2000);
     }
 
-3- Javascript lit la variable user qui déclenche la fonction loginUser. Le call stack prend en charge loginUser et s'aperçoit qu'il y'a une méthode setTimeout à l'intérieur, ce qui défini une temporisation que javascript ne va pas gérer, il a besoin de poursuivre la lecture du code et décide donc d'envoyer loginUser vers le navigateur qui va la stocker temporairement avec son API Web pour la durée définie dans la fonction setTimeout (2000ms).
+3- Javascript lit la variable user qui déclenche la fonction loginUser. Le call stack prend en charge loginUser et s'aperçoit qu'il y'a une fonction asynchrone setTimeout à l'intérieur qui défini une temporisation que javascript ne va pas gérer, il a besoin de poursuivre la lecture du code et décide donc d'envoyer loginUser vers le navigateur qui va la stocker temporairement avec son API Web pour la durée définie dans la fonction setTimeout (2000ms).
 
     const user = loginUser("emmanueldevfr@gmail.com", 123456789,(parametresDeLaFonctionCallback) => {
         console.log(parametresDeLaFonctionCallback);
@@ -244,7 +246,7 @@ Puis nous allons associer cette nouvelle fonction au profil de l'utilisateur lor
 
 Lorsque Javascript va lire la variable user1, il va exécuter la fonction loginUser en lui passant en paramètres l'adresse email de l'utilisateur, son mot de passe ainsi qu'une fonction callback qui aura pour instruction d'afficher les informations de l'utilisateur (email, password) ainsi que les vidéos associés à son compte email.
 
-Tout cela va se faire de manière asynchrone en passant par des fonctions utilisant la fonction asynchrone **setTimeout**
+Tout cela va se faire de manière asynchrone en passant par des fonctions utilisant la fonction **setTimeout**
 
 Résultat en console:
 
@@ -290,6 +292,6 @@ Résultat en console:
 On pourrait continuer ainsi en ajoutant le sujet de la vidéo, la durée, etc...
 Notre variable au final ressemblerai à un gros amas complexe de code en forme de pyramide et nous savons tous que par nature un développeur n'aime pas la complexité.
 
-C'est pourquoi il existe une solution beaucoup plus pratique qui fait appel à ce que l'on appel des **promesses**
+C'est pourquoi il existe une solution beaucoup plus pratique qui fait appel à ce que l'on appel des **promesses**.
 
 ---
