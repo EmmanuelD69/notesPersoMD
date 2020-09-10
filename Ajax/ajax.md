@@ -118,7 +118,7 @@ setTimeout est une fonction asynchone, elle est envoyé au navigateur pour la du
 
     console.log('Start');
 
-2- Javascript lit de manière passive la fonction _setTimeout_ et l'envoi vers le navigateur pour la durée de la tempo pour pouvoir poursuivre sa lecture du code.
+2- Javascript lit de manière passive la fonction _loginUser_ et la mémorise dans le DOM.
 
     function loginUser(email, password){
         setTimeout(() => {
@@ -127,7 +127,7 @@ setTimeout est une fonction asynchone, elle est envoyé au navigateur pour la du
         },2000);
     }
 
-3- Javascript lit la variable user qui fait appel à la fonction _loginUser_
+3- Javascript lit la variable user qui déclenche la fonction loginUser. Le call stack prend en charge loginUser et s'aperçoit qu'il y'a une méthode setTimeout à l'intérieur, ce qui défini une temporisation que javascript ne va pas gérer, il a besoin de poursuivre la lecture du code et décide donc d'envoyer loginUser vers le navigateur qui va la stocker temporairement avec son API Web pour la durée définie dans la fonction setTimeout (2000ms).
 
     const user = loginUser("emmanueldevfr@gmail.com", 123456789);
 
@@ -242,7 +242,7 @@ Puis nous allons associer cette nouvelle fonction au profil de l'utilisateur lor
 
 **<u>Décomposition de la variable:</u>**
 
-Lorsque Javascript va lire la variable user1, elle va exécuter la fonction loginUser en lui passant en paramètres l'adresse email de l'utilisateur, son mot de passe ainsi qu'une fonction callback qui aura pour instruction d'afficher les informations de l'utilisateur (email, password) ainsi que les vidéos associés à son compte email.
+Lorsque Javascript va lire la variable user1, il va exécuter la fonction loginUser en lui passant en paramètres l'adresse email de l'utilisateur, son mot de passe ainsi qu'une fonction callback qui aura pour instruction d'afficher les informations de l'utilisateur (email, password) ainsi que les vidéos associés à son compte email.
 
 Tout cela va se faire de manière asynchrone en passant par des fonctions utilisant la fonction asynchrone **setTimeout**
 
