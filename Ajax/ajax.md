@@ -78,7 +78,7 @@ Il existe d'autres actions asynchrones comme par exemple les
 
 _EVENTLISTENERS_
 
-Lorsqu'on place un event listener sur un élément, javascript confie la gestion de celui ci au navigateur. il ne va pas attendre qu'une action se produise pour continuer de lire le code, il va transférer la charge de cette action au browser qui va patientez qu'un clic s'effectue avant d'en informer javascript pour executer le code de la fonction contenant l'event.
+Lorsqu'on place un event listener sur un élément, javascript confie la gestion de celui ci au navigateur. il ne va pas attendre qu'une action se produise pour continuer de lire le code, il va transférer la charge de cette action au browser qui va patientez qu'un évènement arrive avant d'en informer javascript pour qu'il exécute le code contenu dans la fonction que l'event à déclenché.
 
 ---
 
@@ -146,7 +146,7 @@ A cet instant précis, la variable ne peux pas avoir connaissance du résultat d
 
 6- Le navigateur, après 2 secondes, exécute le code contenu dans la fonction asynchrone _setTimeout_.
 
-On est donc face à un problème... comment faire pour avoir accès aux données après que la tempo se soit achevé?
+On est donc face à un problème... comment faire pour avoir accès aux données récupérées au bout de la temporisation et les afficher?
 
 ---
 
@@ -176,7 +176,7 @@ Dans notre cas actuel, le code ressemblera à:
 
     console.log('End');
 
-Ici notre fonction callback est définie sous la forme d'une fonction anonyme dans la variable **user**. La lecture cette variable par javascript va déclencher l'exécution de la fonction _loginUser_ (fonction de haut rang) qui prendra en paramètre, l'adresse email, le mot de passe ainsi que la fonction callback anonyme.
+Ici notre fonction callback est définie sous la forme d'une fonction anonyme dans la variable **user**. La lecture de cette variable par javascript va déclencher l'exécution de la fonction _loginUser_ (fonction de haut rang) qui prendra en paramètre, l'adresse email, le mot de passe ainsi que la fonction callback anonyme.
 
 **<u>Que va faire Javascript?</u>**
 
@@ -199,7 +199,7 @@ Ici notre fonction callback est définie sous la forme d'une fonction anonyme da
         console.log(parametresDeLaFonctionCallback);
     });
 
-<span style="color:red"> **Ici notre fonction callback a pour but de demander l'affichage en console de son contenu situé entre paranthèse, ce qui se trouve en paramètre de la fonction callback.**</span>
+<span style="color:red"> **Ici notre fonction callback a pour but de demander l'affichage en console du contenu situé entre paranthèse, ce qui se trouve en paramètre de la fonction callback.**</span>
 
 j'aurais tout aussi bien pu indiquer user, toto, tata, etc... en paramètre de la fonction anonyme mais pour plus de précision et de clarté j'ai utilisé "parametresDeLaFonctionCallback" pour bien indiquer que le console log va afficher ce qui se trouve entre paranthèse de la fonction callback se trouvant dans la fonction setTimeout.
 
@@ -225,7 +225,7 @@ Ps: c'est un objet qui se trouve en paramètre de la fonction callstack.
 
 Dans la continuité de notre example, partons du principe que nous avons le profil d'un youtuber qui publie du contenu vidéo et l'on souhaite associer à son profil la liste des vidéos qu'il a déjà publiées.
 
-pour cela nous allons créer une fonction: **getUserVideos**
+pour cela nous allons créer une fonction **getUserVideos**:
 
     function getUserVideos(email, fonctionCallback) {
         setTimeout(() => {
@@ -233,7 +233,7 @@ pour cela nous allons créer une fonction: **getUserVideos**
         }, 2000);
     }
 
-Puis nous allons associer cette nouvelle fonction au profil de l'utilisateur lorsqu'il se log:
+Puis nous allons associer cette nouvelle fonction à celle permettant d'afficher le profil de l'utilisateur lorsqu'il se log:
 
     const user1 = loginUser('emmanueldevfr@gmail.com', 123456789, (userInfos) => {
         console.log(userInfos);
@@ -260,7 +260,7 @@ Résultat en console:
 
 Allons encore plus loins et disons que nous souhaitons aussi obtenir des informations sur les vidéos comme par example le titre de la vidéo pour commencer.
 
-pour cela nous allons créer une fonction: **getUserVideosTitle**
+pour cela nous allons créer une fonction **getUserVideosTitle**:
 
     function getUserVideosTitle(videos, fonctionCallback) {
         setTimeout(() => {
