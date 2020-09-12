@@ -308,20 +308,27 @@ Une opération asynchrone peut être dans l’un des états suivants :
 
 > Opération terminée ou plus exactement stoppée après un échec (promesse rejetée)
 
-nous allons définir une fonction dont le rôle est d’effectuer une opération asynchrone et cette fonction va, lors de son exécution, créer et renvoyer un objet Promesse.
+Grâce à une variable, nous allons définir une fonction dont le rôle est d’effectuer une opération asynchrone et cette fonction va, lors de son exécution, va créer et renvoyer un objet Promesse.
 
     const promesse = new Promise((resolve, reject) => {
-        //Tâche asynchrone à réaliser
-        /* Appel de resolve() si la promesse est résolue (tenue)
-        ou
-        Appel de reject() si elle est rejetée (rompue) */
+        fonctionAsynchrone(() => {
+            /* Appel de resolve() si la promesse est résolue (tenue)
+            ou
+            Appel de reject() si elle est rejetée (rompue) */
+        },timer);        
     });
+
+    const promesse = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve({user1: "emmanueldev});
+        },2000);
+    })
 
 PS: En pratique, la majorité des opérations asynchrones qu’on va vouloir réaliser en JavaScript vont déjà être pré-codées et fournies par des API. Ainsi, nous allons rarement créer nos propres promesses mais plutôt utiliser les promesses renvoyées par les fonctions de ces API.
 
-Lorsque nos fonctions asynchrones s’exécutent, elles renvoient une promesse. Cette promesse va partager les informations liées à l’opération qui vient de s’exécuter et on va pouvoir l’utiliser pour définir quoi faire en fonction du résultat qu’elle contient (en cas de succès de l’opération ou en cas d’échec).
+Lorsque nos fonctions asynchrones s’exécutent, elles renvoient une promesse (un objet). Cette promesse va partager les informations liées à l’opération qui vient de s’exécuter et on va pouvoir l’utiliser pour définir quoi faire en fonction du résultat qu’elle contient (en cas de succès de l’opération ou en cas d’échec).
 
-Les promesses permettent ainsi de représenter et de manipuler un résultat un évènement futur et nous permettent donc de définir à l’avance quoi faire lorsqu’une opération asynchrone est terminée, que celle-ci ait été terminée avec succès ou qu’on ait rencontré un cas d’échec.
+Les promesses permettent ainsi de représenter et de manipuler un résultat, un évènement futur, et nous permettent donc de définir à l’avance quoi faire lorsqu’une opération asynchrone est terminée, que celle-ci ait été terminée avec succès ou qu’on ait rencontré un cas d’échec.
 
 Pour le dire autrement, vous pouvez considérer qu’une valeur classique est définie et disponible dans le présent tandis qu’une valeur « promise » est une valeur qui peut déjà exister ou qui existera dans le futur.
 
