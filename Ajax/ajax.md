@@ -391,3 +391,68 @@ nous aurons alors comme résultat en console:
 <u>**Pour résumer:**</u>
 
 **Consommer une promesse nous donne le résultat de notre requête. On utilise _then_ pour afficher les informations retournées et _catch_ pour afficher les erreurs.**
+
+## Refactorisation de nos fonctions asynchrone avec l'usage des promesses
+
+**AVANT**
+
+    function loginUser(email, password, fonctionCallback){
+        setTimeout(() => {
+        console.log("now we get the data");
+        fonctionCallback ({userEmail: email});
+        },2000);
+    }
+
+    function getUserVideos(email, fonctionCallback) {
+        setTimeout(() => {
+    	fonctionCallback(['video1', 'video2', 'video3']);
+        }, 2000);
+    }
+
+    function getUserVideosTitle(videos, fonctionCallback) {
+        setTimeout(() => {
+    	fonctionCallback([`Titre de la video ${videos}`]);
+        }, 2000);
+    }
+
+        const user1 = loginUser('emmanueldevfr@gmail.com', 123456789, (userInfos) => {
+        console.log(userInfos);
+        getUserVideos(userInfos.userEmail, (videos) => {
+    	    console.log(videos);
+            getUserVideosTitle(videos[0], title => {
+                console.log(title);
+            })
+        });
+    });
+
+**APRES**
+
+    function loginUser(email, password){
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                console.log("now we get the data");
+                resolve({userEmail: email});
+            },2000);
+        });
+    }
+
+    function getUserVideos(email) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+    	        resolve(['video1', 'video2', 'video3']);
+            }, 2000);
+        });
+    }
+
+    function getUserVideosTitle(videos) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+    	        resolve([`Titre de la video ${videos}`]);
+            }, 2000);
+        });
+    }
+
+    loginUser('emmanueldevfr@gmail.com', 123456789)
+        .then((user) =>	getUserVideos(user.email))
+    	.then((videos) => getUserVideosTitle(videos[0]))
+    	.then((title) => console.log(title))
