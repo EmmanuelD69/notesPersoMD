@@ -308,23 +308,37 @@ Une opération asynchrone peut être dans l’un des états suivants :
 
 > Opération terminée ou plus exactement stoppée après un échec (promesse rejetée)
 
-Grâce à une variable, nous allons définir une fonction dont le rôle est d’effectuer une opération asynchrone et cette fonction va, lors de son exécution, va créer et renvoyer un objet Promesse.
+Grâce à une variable, nous allons définir une fonction dont le rôle est d’effectuer une opération asynchrone et cette fonction va, lors de son exécution, créer et renvoyer un objet Promesse.
 
     const promesse = new Promise((resolve, reject) => {
         fonctionAsynchrone(() => {
             /* Appel de resolve() si la promesse est résolue (tenue)
             ou
             Appel de reject() si elle est rejetée (rompue) */
-        },timer);        
+        },timer);
     });
+
+Examples concrets:
+
+1- Dans le cas où l'on obtient une réponse positive lors de création de l'objet promesse.
 
     const promesse = new Promise((resolve, reject) => {
         setTimeout(() => {
-            resolve({user1: "emmanueldev});
+            resolve({user1: "emmanueldev"});
         },2000);
     })
 
-PS: En pratique, la majorité des opérations asynchrones qu’on va vouloir réaliser en JavaScript vont déjà être pré-codées et fournies par des API. Ainsi, nous allons rarement créer nos propres promesses mais plutôt utiliser les promesses renvoyées par les fonctions de ces API.
+2- Dans le cas où l'on obtient une réponse négative lors de la création de l'objet promesse.
+
+    const promesse = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            reject(new Error(`il y'a une erreur`));
+        },2000);
+    })
+
+**il est de bonne pratique d'introduire une object erreur via une fonction constructeur indépendante de la promesse, que nous pouvons créer dans notre code en amont. **
+
+_PS: En pratique, la majorité des opérations asynchrones qu’on va vouloir réaliser en JavaScript vont déjà être pré-codées et fournies par des API. Ainsi, nous allons rarement créer nos propres promesses mais plutôt utiliser les promesses renvoyées par les fonctions de ces API._
 
 Lorsque nos fonctions asynchrones s’exécutent, elles renvoient une promesse (un objet). Cette promesse va partager les informations liées à l’opération qui vient de s’exécuter et on va pouvoir l’utiliser pour définir quoi faire en fonction du résultat qu’elle contient (en cas de succès de l’opération ou en cas d’échec).
 
@@ -334,4 +348,46 @@ Pour le dire autrement, vous pouvez considérer qu’une valeur classique est d�
 
 <span style="color:red">Au final, on fait une « promesse » au navigateur ou au programme exécutant notre code : on l’informe qu’on n’a pas encore le résultat de telle opération car celle-ci ne s’est pas déroulée mais que dès que l’opération sera terminée, son résultat sera disponible dans la promesse et qu’il devra alors exécuter tel ou tel code selon le résultat contenu dans cette promesse.</span>
 
-Le code à exécuter après la consommation d’une promesse va être passé sous la forme de fonction de rappel (callback function) qu’on va attacher à la promesse en question.
+## Consommation d'une promesse, c'est quoi?
+
+Une fois qu'une promesse a été créer elle est utilisée, elle est consommée, en lui passant l'instruction: <span style="color:red">then</span>
+
+cela se présente sous la forme suivante:
+
+    promesse.then();
+
+Ce qui se trouve entre paranthèses est le résultat resolve ou reject en fonction de ce qui a été renvoyé lors de la création de la promesse.
+
+Par example, si l'on demande des informations à une API et que celles ci existent nous aurons alors une promesse resolve contenant ces informations.
+Parcontre si les informations n'existent pas ou si un problème quelconque survient empéchant le retour d'informations, nous aurons une promesse reject contenant probablement un message d'erreur.
+
+Donc, une fois la promesse renvoyé, le code contenu dans la promesse (resolve ou reject) va être exécuté sous la forme d'une fonction de rappel (callback function).
+
+    promesse.then( resultat => {
+        consol.log(resultat);
+    });
+
+et en cas d'erreur **il est de bonne pratique** de récupérer et afficher celle ci en ajoutant l'instruction <span style="color:red">catch</span>.
+
+    promesse
+        .then( resultat => {
+            consol.log(resultat);
+        })
+        .catch( erreur => {
+            console.log(erreur.message)
+        });
+
+nous aurons alors comme résultat en console:
+
+1- Dans le cas d'une promesse resolve.
+
+    {user1: "emmanueldev"}
+
+2- Dans le cas d'une promesse reject.
+
+    Le résultat est:
+    il y'a une erreur
+
+<u>**Pour résumer:**</u>
+
+**Consommer une promesse nous donne le résultat de notre requête. On utilise _then_ pour afficher les informations retournées et _catch_ pour afficher les erreurs.**
