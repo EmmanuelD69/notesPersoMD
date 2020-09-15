@@ -498,3 +498,35 @@ le simple fait d'ajouter un console log va affecter toute la chaine de then. En 
     la liste des videos est:
 
 Au moment où j'écris ce résumé, je n'ai pas encore compris la raison de ce changement de fonctionnement.
+
+## Promise.all, c'est quoi?
+
+Lorsque l'on exécute des promesses, on éxécute du javascript asynchrone. Ce qui signifie qu'il y'a un délai d'attente avant d'obtenir une réponse.
+
+Ce délai peut varier d'une fonction Async à une autre et il faut en général attendre la fin de la temporisation d'une fonction pour enchainer la suivante. Il existe une solution pour faire démarrer plusieurs fonctions en même temps, c'est le **Promise.all**
+
+Soit 2 Promesses:
+
+    const youtube = new Promise(resolve => {
+        setTimeout(() => {
+            console.log("getting vidéos from youtube:");
+            resolve({videos: [1, 2, 3, 4, 5]});
+        }, 2000);
+    });
+
+        const facebook = new Promise(resolve => {
+        setTimeout(() => {
+            console.log("user from facebook:");
+            resolve({user: "name"});
+        }, 5000);
+    });
+
+l'une à un délai de 2 secondes, l'autre 5 seconde. Dans une fonctionnement sans **Promise.all** il faudrait attendre que les 2 secondes de la promesse youtube se soit terminée pour enchainer sur la promesse facebook qui durerait 5 secondes, soit un total de 7 secondes pour exécuter l'ensemble.
+
+Avec **Promise.all** les deux promesses démarrent leur exécution en même temps. On écrit cela de la manière suivante:
+
+    Promise.all([youtube, facebook]).then(resultat => console.log(resultat));
+
+Comme les deux Promesses s'exécutent en même temps, le résultat n'arrivera plus au bout de 7 secondes mais au bout de 5 secondes, correspondant à la temporisation la plus longue.
+
+En effet, le résultat global n'arrivera qu'au bout de la fin de la promesse ayant la temporisation la plus longue.
