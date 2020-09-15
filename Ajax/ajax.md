@@ -477,7 +477,7 @@ résultat en console:
     le titre de la video est:
     ["Titre de la video video1"]
 
-**Il est important de noter que si l'on intérrompt l'enchainement des then en ajoutant plus d'une instruction par fonction callback, le résultat souhaité ne s'affichera et nous aurons un message d'erreur à la place, nous indiquant que ce que l'on cherche à obtenir n'est pas défini**
+**Il est important de noter que si on ajoute plus d'une instruction par fonction callback, le résultat souhaité ne s'affichera et nous aurons un message d'erreur à la place, nous indiquant que ce que l'on cherche à obtenir n'est pas défini**
 
 c'est à dire:
 
@@ -551,4 +551,27 @@ et voici sa version refactorisée pour ressembler à du code Synchrone:
         console.log(title);
     }
 
+    displayUser();
+
 L'idée globale est de garder un visuel similaire sur l'ensemble du code. Ici avec l'utilisation des termes clés **async** et **await**, nous gardons une structure qui nous est familière, c'est une fonction avec des variables à laquelle s'applique du code asynchrone, et c'est ce que l'on identifie et rend possible avec l'utilisation de async/await.
+
+Plus besoin d'utiliser **.then**, on se retrouve avec une structure classique typé synchrone mais construite de manière asynchrone.
+
+**<u>Gestion des erreurs:</u>**
+
+on a vu précédemment qu'il était possible de gérer indépendemment les messages d'erreurs avec l'utilisation de l'instruction **.catch**. Avec notre nouvelle refactorisation, semblable à du code synchrone, nous avons aussi le moyen de gérer les erreurs en utilisant l'association des instructions **try** et **catch**
+
+    async function displayUser() {
+        try{
+            const loggedUser = await loginUser('emmanueldevfr@gmail.com', 123456789);
+            const videos = await getUserVideos(loggedUser.userEmail);
+            const title = await getUserVideosTitle(videos[0]);
+            console.log(title);
+        } catch(error){
+            console.log(error);
+        }
+    }
+
+    displayUser();
+
+**try** englobe toutes les opérations à effectuer dans le cadre du bon fonctionnement de la fonction et si on se retrouve confronté à une erreur, alors **catch** prend le relais pour afficher un message d'erreur de notre choix.
