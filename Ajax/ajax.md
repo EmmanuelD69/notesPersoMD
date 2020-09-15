@@ -530,3 +530,25 @@ Avec **Promise.all** les deux promesses démarrent leur exécution en même temp
 Comme les deux Promesses s'exécutent en même temps, le résultat n'arrivera plus au bout de 7 secondes mais au bout de 5 secondes, correspondant à la temporisation la plus longue.
 
 En effet, le résultat global n'arrivera qu'au bout de la fin de la promesse ayant la temporisation la plus longue.
+
+## ASYNC / AWAIT , c'est quoi?
+
+Nous avons vu précédemment comment refactoriser notre code asychrone avec l'usage des promesses. Et si nous pouvions aller encore plus loin et refactoriser notre code Asynchrone pour le faire ressembler à du code synchrone comme nous avons l'habitude d'écrire.
+
+Prenons pour base notre dernier code Asychrone:
+
+    loginUser('emmanueldevfr@gmail.com', 123456789)
+        .then((user) =>	getUserVideos(user.userEmail))
+    	.then((videos) => getUserVideosTitle(videos[0]))
+    	.then((title) => console.log(title))
+
+et voici sa version refactorisée pour ressembler à du code Synchrone:
+
+    async function displayUser() {
+        const loggedUser = await loginUser('emmanueldevfr@gmail.com', 123456789);
+        const videos = await getUserVideos(loggedUser.userEmail);
+        const title = await getUserVideosTitle(videos[0]);
+        console.log(title);
+    }
+
+L'idée globale est de garder un visuel similaire sur l'ensemble du code. Ici avec l'utilisation des termes clés **async** et **await**, nous gardons une structure qui nous est familière, c'est une fonction avec des variables à laquelle s'applique du code asynchrone, et c'est ce que l'on identifie et rend possible avec l'utilisation de async/await.
