@@ -394,7 +394,12 @@ nous aurons alors comme résultat en console:
 
 ## Refactorisation de nos fonctions asynchrone avec l'usage des promesses
 
+Dans l'example pratique que nous avons utilisé, nous avons vu comment, à l'aide de fonctions callback, obtenir des informations et les afficher.
+La méthode utilisé repose sur une succéssion de callback et nous avons le moyen de rendre cela un peu plus "lisible" en utilisant les promesses.
+
 **AVANT**
+
+-Fonctions faisant appel à des callback.
 
     function loginUser(email, password, fonctionCallback){
         setTimeout(() => {
@@ -415,6 +420,8 @@ nous aurons alors comme résultat en console:
         }, 2000);
     }
 
+-variable qui déclenche la fonction loginUser et enchaine les callbacks de façon pyramidale.
+
         const user1 = loginUser('emmanueldevfr@gmail.com', 123456789, (userInfos) => {
         console.log(userInfos);
         getUserVideos(userInfos.userEmail, (videos) => {
@@ -426,6 +433,8 @@ nous aurons alors comme résultat en console:
     });
 
 **APRES**
+
+-Fonctions faisant appel à des promesses.
 
     function loginUser(email, password){
         return new Promise((resolve, reject) => {
@@ -452,7 +461,40 @@ nous aurons alors comme résultat en console:
         });
     }
 
+-Fonction enchainant la consommation de promesses.
+
     loginUser('emmanueldevfr@gmail.com', 123456789)
-        .then((user) =>	getUserVideos(user.email))
+        .then((user) =>	getUserVideos(user.userEmail))
     	.then((videos) => getUserVideosTitle(videos[0]))
     	.then((title) => console.log(title))
+
+On remarque une grosse différence au niveau de la structure du code, celui ci est beaucoup plus lisible. On enchaine les _then_ de sorte à obtenir en dernière ligne le résultat voulu.
+
+résultat en console:
+
+    now we get the data
+    la liste des videos est:
+    le titre de la video est:
+    ["Titre de la video video1"]
+
+**Il est important de noter que si l'on intérrompt l'enchainement des then en ajoutant plus d'une instruction par fonction callback, le résultat souhaité ne s'affichera et nous aurons un message d'erreur à la place, nous indiquant que ce que l'on cherche à obtenir n'est pas défini**
+
+c'est à dire:
+
+    loginUser('emmanueldevfr@gmail.com', 123456789)
+        .then((user) => {
+    	    console.log(user);
+    	    getUserVideos(user.email);
+        })
+        .then((videos) => getUserVideosTitle(videos[0]))
+        .then((detail) => console.log(detail));
+
+le simple fait d'ajouter un console log va affecter toute la chaine de then. En console on aura ce message:
+
+    now we get the data
+    {userEmail: "emmanueldevfr@gmail.com"}
+    Uncaught (in promise) TypeError: Cannot read property '0' of undefined
+    at app.js:43
+    la liste des videos est:
+
+Au moment où j'écris ce résumé, je n'ai pas encore compris la raison de ce changement de fonctionnement.
