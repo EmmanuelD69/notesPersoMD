@@ -42,3 +42,13 @@ Si un message d'erreur s'affiche cela signifie que l'installation n'a pas foncti
 ## autre chose?
 
 Avec l'installation de Node.js on récupère aussi NPM, ce qui signifie littéralement Node Package Manager. Il s'agit d'un gestionnaire de paquets pour Node.js qui va nous aider à installer des dépendances (librairies, applis, etc...) complémentaires pour faire de Node.js un puissant outils de communication avec la machine.
+
+# Comment cela fonctionne?
+
+## lecture/exécution d'un fichier?
+
+Comme indiqué précédemment, Node.js va nous permettre de lire des fichiers et notamment nos scripts écrient en Javascript. Pour cela il suffit de lui indiquer en LDC dans un terminal.
+
+on commence avec le terme **node** suivi du nom du fichier que l'on veut lire/exécuter
+
+    D:\CODING\GitHub\notesPersoMD\NodeJs> node app.js
