@@ -226,3 +226,37 @@ affichage dans le terminal en cas d'exécution:
     app.js
     .js
 
+## url.js 
+
+    const url = require ("url");
+
+url nous permet de travailler avec une adresse web. Le module contient des fonctions qui nous permettent de manipuler tout ou partie d'une adresse web.
+
+Pour cela il nous faut créer une variable qui contiendra l'adresse web et une variable qui va nous permettre de travailler sur cette adresse web en utilisant la fonction **parse**.
+
+    /* Enregistre l'adresse web sur laquelle nous allons travailler */
+    const adress = "http://localhost:8000/default.html?year=2020&month=september";
+
+    /* Enregistre l'analyse syntaxique de l'adresse web pour pouvoir travailler dessus */
+    const parsedUrl = url.parse(adress, true);
+
+Il faut ensuite simplement choisir ce que l'on souhaite afficher de notre adresse:
+
+    /* affiche la partie host de l'adresse web */
+    console.log(parsedUrl.host);
+
+    /* affiche le chemin vers le fichier contenu dans l'adresse web */
+    console.log(parsedUrl.pathname);
+
+    /* affiche sous la forme d'un objet les requêtes affichées dans l'adresse web  */
+    console.log(parsedUrl.query);
+
+    /* affiche le mois indiqué dans l'adresse web  */
+    console.log(parsedUrl.query.month);
+
+Le terminal nous affichera alors le résultat suivant:
+
+    localhost:8000
+    /default.html
+    [Object: null prototype] { year: '2020', month: 'september' }
+    september
