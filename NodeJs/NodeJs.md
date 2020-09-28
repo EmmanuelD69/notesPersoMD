@@ -187,3 +187,11 @@ Nous avons vu au début de ce chapitre que dans node.js, le code global est cont
 Si l'on effectue un **console.log(__dirname)** dans notre fichier app.js, on obtient:
 
     D:\CODING\GitHub\notesPersoMD\NodeJs
+
+## Qu'est ce c'est filename??
+
+**__filename** nous permet d'obtenir l'adresse complète du fichier dans lequel l'appel à été lancé.
+
+Si l'on effectue un **console.log(__filename)** dans notre fichier app.js, on obtient:
+
+    D:\CODING\GitHub\notesPersoMD\NodeJs\app.js

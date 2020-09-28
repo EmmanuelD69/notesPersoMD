@@ -9,3 +9,4 @@ intro.hello();
 intro.howAreYou();
 
 console.log(__dirname);
+console.log(__filename);
