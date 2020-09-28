@@ -178,7 +178,7 @@ Le résultat en console nous affichera:
     Hello World JS!
     How are you??
 
-## Qu'est ce c'est dirname??
+## Qu'est ce que c'est __dirname??
 
 Nous avons vu au début de ce chapitre que dans node.js, le code global est contenu dans une fonction wrapper ayant plusieurs paramètres. 
 
@@ -188,7 +188,7 @@ Si l'on effectue un **console.log(__dirname)** dans notre fichier app.js, on obt
 
     D:\CODING\GitHub\notesPersoMD\NodeJs
 
-## Qu'est ce c'est filename??
+## Qu'est ce que c'est __filename??
 
 **__filename** nous permet d'obtenir l'adresse complète du fichier dans lequel l'appel à été lancé.
 
@@ -260,3 +260,26 @@ Le terminal nous affichera alors le résultat suivant:
     /default.html
     [Object: null prototype] { year: '2020', month: 'september' }
     september
+
+## fs.js (File System)
+
+    const fs = require ("fs");
+
+Avec ce module inclus dans Node.js on peut créer des fichiers, lire le contenu d'un fichier et plus.... on intéragit directement avec le contenu d'un fichier.
+
+Prenons pour premier example l'écriture d'un fichier texte. Il nous faut pour cela utiliser la structure suivante:
+
+    fs.writeFile("fileName", "value", callbackFn)
+
+    fs.writeFile("message.txt", "Hello there!", (err) => {
+        if(err) throw err;
+
+        console.log("un fichier a été écrit");
+    });
+
+Lors de l'exécution du fichier contenant le module fs, un fichier texte est créé avec le message contenu dans le paramètre *"value"* de la fonction asynchrone.
+
+En effet il s'agit d'une fonction asynchrone, ce qui signifie qu'elle ne rend pas immédiatement un résultat mais ne va pas bloquer l'exécution du code.
+Pour schématiser, imaginons que l'on travaille dans la restauration en tant que serveur. Lorsqu'un serveur prend un commande, il l'emmène à la cuisine pour que le chef puisse préparer la commande. Le serveur ne va pas rester planté à attendre que le chef ait fini de préparer la commande, il va retourner en salle pour prendre les commandes suivantes ou s'occuper d'une autre tache. 
+
+Ici, la fonction Asynchrone c'est notre commande et Javascript c'est notre serveur. Le chef quant à lui est ce qu'on appelle avec NodeJS la boucle d'évènements.
