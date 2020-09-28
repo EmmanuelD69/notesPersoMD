@@ -85,7 +85,7 @@ Nous allons créer un fichier Javascript qui contiendra une fonction de base pou
         console.log("Hello World JS!");
     }
 
-Ce fichier représente maintenant un **"module"** que l'on peut exporter puis importer dans notre fichier "Maître" **app.js**. 
+Ce fichier _"helloWorld.js"_ représente maintenant un **"module"** que l'on peut exporter puis importer dans notre fichier "Maître" **app.js**. 
 
 Au final, nous aurons tout une liste de fichiers modules et un seul fichier Maître pour les commander tous. Il nous suffit d'appeler le fichier Maître pour faire fonctionner toutes nos fonctions qui auront été exportés/importés dans app.js.
 
@@ -113,7 +113,7 @@ Pour importer le module *helloWorld* que nous avons créé, il nous suffit de l'
 
 Au final, notre fichier Maître ressemblera à une succéssion d'import et des appels vers les modules pour exécuter leurs code.
 
-    const hello = require("./helloWorld);
+    const hello = require("./helloWorld");
     
     hello();
 
@@ -130,15 +130,50 @@ Mais alors, comment faire pour exporter toutes ces fonctions depuis notre module
 
 Partons du principe que nous avons une deuxième fonction que l'on nomme *"howAreYou"*
 
+<u>fichier helloWorld.js:</u>
+
     const hello = () => {
         console.log("Hello World JS!");
     }
 
     const howAreYou = () => {
-        console.log("How are you??);
+        console.log("How are you??");
     }
 
 on exporte les deux fonctions de la manière suivante:
 
     module.exports.hello = hello;
     module.exports.howAreYou = howAreYou;
+
+## Qu'est ce qui change avec l'appel de app.js?
+
+Avant, nous avions un module contenant une seule fonction, maintenant nous avons un module contenant deux fonctions. si l'on effectue un console.log de notre module, on obtient un objet contenant deux fonctions.
+
+    /* Import du module helloWorld */
+    const intro = require("./helloWorld");    
+
+    /* affichage en console du contenu du module helloWorld */
+    console.log(intro);
+
+    /* appel des fonctions contenues dans le module helloWorld */
+    intro.hello();
+    intro.howAreYou();
+
+Execution du fichier app.js:
+
+D:\CODING\GitHub\notesPersoMD\NodeJs> node app.js
+
+    { hello: [Function: hello], howAreYou: [Function: howAreYou] }
+
+1 objet, 2 fonctions > hello et howAreYou.
+
+Pour exécuter ces fonctions, il faut précéder le nom de la fonction par le nom du module auxquel elle est rataché. 
+
+    moduleName.fonctionName();
+    intro.hello();
+    intro.howAreYou();
+
+Le résultat en console nous affichera:
+
+    Hello World JS!
+    How are you??
