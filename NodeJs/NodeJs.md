@@ -57,10 +57,10 @@ on commence avec le terme **node** suivi du nom du fichier que l'on veut lire/ex
 
 Node dans son fonctionnement ressemble un peu à Sass en Css dans le sens où chaque fichiers que l'on crée peut être importé dans un fichier "Maître". On se retrouve avec une liste de fichiers importés que l'on appelle des <span style="color:red">_modules_</span> pour faire fonctionner notre principale fichier Js que l'on nomme généralement **app.js** ou bien **server.js**
 
-Chaque fois que l'on crée un fichier node, celui ci est inclut dans cette fonction:
+Chaque fois que l'on crée un fichier node, celui ci est inclut dans cette fonction "wrapper":
 
     (function (exports, require, module, __filename, __dirname) {
-        // Le code contenu dans les modules s'exécute à l'intérieur de cette fonction et n'est disponible que dans cette fonction.
+        // Le code contenu dans les modules s'exécute à l'intérieur de cette fonction et n'est disponible que dans celle ci.
 
 
 
@@ -74,12 +74,12 @@ au sein de cette fonction nous avons accès à différentes options:
     -filename,
     -dirname
 
-Cette fonction est actuellement invisible, elle travail en arrière plan, comme l'objet "Window" dans Javascript.
+Cette fonction est actuellement invisible, elle travaille en arrière plan, comme l'objet "Window" dans Javascript.
 
 
 ## Création d'un module (fichier node.js):
 
-Nous allons créer un fichier Javascript qui contiendra une fonction de base pour dire "Hello World Js!". On lui attribut le nom de "helloWorld.js".
+Nous allons créer un fichier Javascript qui contiendra une fonction de base pour dire "Hello World Js!". On lui attribut le nom de _"helloWorld.js"_.
 
     const hello = () => {
         console.log("Hello World JS!");
@@ -92,3 +92,11 @@ Au final, nous aurons tout une liste de fichiers modules et un seul fichier Maî
 appel du fichier Maître en console:
 
     node app.js
+
+## Export d'un module
+
+pour rappel, tout notre code s'exécutera au sein de la fonction wrapper vu plus haut, qui contient plusieurs paramètres dont le paramètre __"module"__.
+
+Pour exporter le code contenu dans notre fichier _"HelloWorld.js"_ il nous suffit d'indiquer ce que nous souhaitons exporter de son contenu de la manière suivante:
+
+    module.exports = hello;
