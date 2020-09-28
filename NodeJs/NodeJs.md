@@ -75,3 +75,20 @@ au sein de cette fonction nous avons accès à différentes options:
     -dirname
 
 Cette fonction est actuellement invisible, elle travail en arrière plan, comme l'objet "Window" dans Javascript.
+
+
+## Création d'un module (fichier node.js):
+
+Nous allons créer un fichier Javascript qui contiendra une fonction de base pour dire "Hello World Js!". On lui attribut le nom de "helloWorld.js".
+
+    const hello = () => {
+        console.log("Hello World JS!");
+    }
+
+Ce fichier représente maintenant un **"module"** que l'on peut exporter puis importer dans notre fichier "Maître" **app.js**. 
+
+Au final, nous aurons tout une liste de fichiers modules et un seul fichier Maître pour les commander tous. Il nous suffit d'appeler le fichier Maître pour faire fonctionner toutes nos fonctions qui auront été exportés/importés dans app.js.
+
+appel du fichier Maître en console:
+
+    node app.js
