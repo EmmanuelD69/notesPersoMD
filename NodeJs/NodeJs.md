@@ -52,3 +52,26 @@ Comme indiqué précédemment, Node.js va nous permettre de lire des fichiers et
 on commence avec le terme **node** suivi du nom du fichier que l'on veut lire/exécuter
 
     D:\CODING\GitHub\notesPersoMD\NodeJs> node app.js
+
+## Structure de Node.Js:
+
+Node dans son fonctionnement ressemble un peu à Sass en Css dans le sens où chaque fichiers que l'on crée peut être importé dans un fichier "Maître". On se retrouve avec une liste de fichiers importés que l'on appelle des <span style="color:red">_modules_</span> pour faire fonctionner notre principale fichier Js que l'on nomme généralement **app.js** ou bien **server.js**
+
+Chaque fois que l'on crée un fichier node, celui ci est inclut dans cette fonction:
+
+    (function (exports, require, module, __filename, __dirname) {
+        // Le code contenu dans les modules s'exécute à l'intérieur de cette fonction et n'est disponible que dans cette fonction.
+
+
+
+    })
+
+au sein de cette fonction nous avons accès à différentes options:
+
+    -exports,
+    -require,
+    -module,
+    -filename,
+    -dirname
+
+Cette fonction est actuellement invisible, elle travail en arrière plan, comme l'objet "Window" dans Javascript.
