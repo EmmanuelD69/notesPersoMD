@@ -7,3 +7,5 @@ console.log(intro);
 /* appel des fonctions contenues dans le module helloWorld */
 intro.hello();
 intro.howAreYou();
+
+console.log(__dirname);

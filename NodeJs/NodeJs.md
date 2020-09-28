@@ -177,3 +177,13 @@ Le résultat en console nous affichera:
 
     Hello World JS!
     How are you??
+
+## Qu'est ce c'est dirname??
+
+Nous avons vu au début de ce chapitre que dans node.js, le code global est contenu dans une fonction wrapper ayant plusieurs paramètres. 
+
+**__dirname** est l'un de ses paramètres et nous permet d'obtenir l'adresse du dossier contenant notre fichier app.js.
+
+Si l'on effectue un **console.log(__dirname)** dans notre fichier app.js, on obtient:
+
+    D:\CODING\GitHub\notesPersoMD\NodeJs
