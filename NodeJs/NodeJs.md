@@ -195,3 +195,34 @@ Si l'on effectue un **console.log(__dirname)** dans notre fichier app.js, on obt
 Si l'on effectue un **console.log(__filename)** dans notre fichier app.js, on obtient:
 
     D:\CODING\GitHub\notesPersoMD\NodeJs\app.js
+
+# Modules déjà existant et inclus dans Node.JS
+
+<span style="color:red">L'utilisation des modules livrés avec Node.JS ne nécéssite pas la création d'un ficher module, il faut simplement effectuer l'appel dans le fichier **app.js** et Node.JS s'occupera de faire la connexion avec le module inclus demandé.</span>
+
+## path.js 
+
+    const path = require ("path");
+
+comme path est inclus dans Node.Js, il n'est pas nécéssaire d'indiquer l'adresse d'un fichier. Il suffit simplement d'indiquer le nom du module pré-inclus dans Node.Js.
+
+Path nous permet de travailler avec l'adressage d'un fichier. Le module contient des fonctions qui nous permettent de montrer le chemin complet d'un fichier, ou juste le nom du fichier comme dans les exemples suivants:
+
+    /* Enregistre le chemin complet vers le ficher app.js */
+    const fileLocation = path.join(__dirname, app.js);
+    console.log(fileLocation);
+
+    /* Enregistre uniquement le nom du fichier contenu dans fileLocation */
+    const fileName = path.basename(fileLocation);
+    console.log(fileName);
+
+    /* Enregistre uniquement l'extension du fichier contenu dans fileName */
+    const fileExtension = path.extname(fileName);
+    console.log(fileExtension);
+
+affichage dans le terminal en cas d'exécution:
+
+    D:\CODING\GitHub\notesPersoMD\NodeJs\app.js
+    app.js
+    .js
+
