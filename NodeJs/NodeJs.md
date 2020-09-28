@@ -109,3 +109,15 @@ Pour importer le module *helloWorld* que nous avons créé, il nous suffit de l'
     const hello = require("./helloWorld");
 
 
+## A quoi ressemble app.js?
+
+Au final, notre fichier Maître ressemblera à une succéssion d'import et des appels vers les modules pour exécuter leurs code.
+
+    const hello = require("./helloWorld);
+    
+    hello();
+
+il suffit alors d'exécuter en console notre fichier **app.js** pour que le code global s'exécute.
+
+    D:\CODING\GitHub\notesPersoMD\NodeJs> node app.js
+    Hello World JS!
