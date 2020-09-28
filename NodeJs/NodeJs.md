@@ -121,3 +121,24 @@ il suffit alors d'exécuter en console notre fichier **app.js** pour que le code
 
     D:\CODING\GitHub\notesPersoMD\NodeJs> node app.js
     Hello World JS!
+
+## Export multiple à partir d'un module
+
+On imagine bien qu'un module ne sera pas toujours aussi simple que celui que nous venons de créer et qu'on va souvent se retrouver avec de multiples fonctions à l'intérieur d'un module unique.
+
+Mais alors, comment faire pour exporter toutes ces fonctions depuis notre module?
+
+Partons du principe que nous avons une deuxième fonction que l'on nomme *"howAreYou"*
+
+    const hello = () => {
+        console.log("Hello World JS!");
+    }
+
+    const howAreYou = () => {
+        console.log("How are you??);
+    }
+
+on exporte les deux fonctions de la manière suivante:
+
+    module.exports.hello = hello;
+    module.exports.howAreYou = howAreYou;
