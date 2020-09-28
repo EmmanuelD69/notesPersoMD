@@ -97,6 +97,15 @@ appel du fichier Maître en console:
 
 pour rappel, tout notre code s'exécutera au sein de la fonction wrapper vu plus haut, qui contient plusieurs paramètres dont le paramètre __"module"__.
 
-Pour exporter le code contenu dans notre fichier _"HelloWorld.js"_ il nous suffit d'indiquer ce que nous souhaitons exporter de son contenu de la manière suivante:
+Pour exporter le code contenu dans notre fichier __"helloWorld.js"__ il nous suffit d'indiquer ce que nous souhaitons exporter de son contenu de la manière suivante:
 
     module.exports = hello;
+
+## Import d'un module
+
+Pour importer le module *helloWorld* que nous avons créé, il nous suffit de l'indiquer dans le code de notre fichier Maître **app.js** de la manière suivante:
+
+    const nom_du_module = require("emplacement_du_module_à_importer");
+    const hello = require("./helloWorld");
+
+
