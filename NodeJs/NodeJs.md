@@ -301,3 +301,44 @@ exemple:
 
         console.log(data);
     });
+
+## http.js (pour créer un serveur)
+
+    const http = require("http");
+
+Ce module va nous permettre de créer un serveur, pour le mettre en place il nous faut suivre la structure suivante:
+
+    const server = http.createServer((request, response) => {
+
+    });
+
+une fois que le serveur est créé, il nous faut indiquer sur quel port il va écouter les requêtes qui lui sont adréssé:
+
+    server.listen(port, callbackFn);
+
+A partir de ce moment, losrqu'on va avec notre navigateur sur l'adresse localhost dont le port correspond à celui indiqué dans le paramètre de _"listen"_, on effectue une requête auprès du serveur si celui çi a été démarré.
+
+**<u>request</u>**: c'est ce que le serveur obtient de l'utilisateur.
+
+**<u>response</u>**: c'est ce que le serveur renvoi à l'utilisateur.
+
+Exemple de serveur:
+
+    const http = require("http");
+
+    const server = http.createServer((req, res) => {
+        res.write("Hello there user!");
+        res.end();
+    });
+
+    server.listen(3000, () => console.log("Server is up and Running!"));
+
+Quand un utilisateur va envoyer une requête vers le serveur, se connecter au serveur par exemple, celui ci va lui renvoyer un message "Hello there user!".
+Il est important de ponctuer ce message par une fermeture du message via l'utilisation de **res.end()**.
+
+<span style="color:red">il faut toujours fermer un message de réponse du serveur à l'aide de **res.end()**</span>.
+
+Notre serveur est prêt à être démarré, pour cela il suffit d'exécuter le fichier qui contient notre module http, cela peut être **app.js** ou **server.js** ou encore **http.js**, à chacun le choix du nom de fichier qui lui sera le plus parlant. On démarre le serveur par la commande suivante dans le terminal:
+
+    node nom_du_fichier_module_http
+    node http.js
