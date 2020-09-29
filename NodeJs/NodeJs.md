@@ -207,7 +207,7 @@ comme path est inclus dans Node.Js, il n'est pas nécéssaire d'indiquer l'adres
 Path nous permet de travailler avec l'adressage d'un fichier. Le module contient des fonctions qui nous permettent de montrer le chemin complet d'un fichier, ou juste le nom du fichier comme dans les exemples suivants:
 
     /* Enregistre le chemin complet vers le ficher app.js */
-    const fileLocation = path.join(__dirname, app.js);
+    const fileLocation = path.join(__dirname, "app.js");
     console.log(fileLocation);
 
     /* Enregistre uniquement le nom du fichier contenu dans fileLocation */
@@ -403,4 +403,47 @@ On peut créer des fichiers html et les envoyer à l'utilisateur quand il se con
 
 Etc...Etc...Etc...
 
-## Mise en place de la logique de serveur:
+## Configuration de http.js pour renvoyer le contenu d'un fichier html
+
+1-Déclaration des modules dont on aura besoin
+
+    const http = require("http");
+    const path = require("path");
+    const fs = require("fs");
+
+2-Création du serveur et paramétrage des conditions en fonction des requêtes reçues
+
+    const server = http.createServer((req, res) => {
+        if (req.url === "/") {
+            fs.readFile(path.join(__dirname, "index.html"), (err, data) => {
+            res.writeHead(200, { "Content-Type": "text/html" });
+            res.write(data);
+            res.end();
+        });
+        }
+
+        if (req.url === "/user") {
+            res.write("Welcome user Emmanuel!");
+            res.end();
+        }
+    });
+
+3- Déclaration du port sur lequel le serveur va écouter
+
+    server.listen(3000, () => console.log("Server is up and Running!"));
+
+<u>Debriefing:</u>
+
+fs.readFile prend 2 arguments(paramètres) et va nous permettre d'aller chercher l'adressage du ficher à lire et de renvoyer son contenu vers l'utilisateur. Pour cela on utilise **path.join**, en premier argument, en indiquant en premier paramètre l'endroit ou se trouve le fichier et en deuxième argument le nom du fichier à lire.
+
+    fs.readFile(path.join(__dirname, "index.html"),
+
+puis en 2ème argument, on va passer une fonction qui va exécuter son contenu uniquement lorsque le fichier aura été lu avec succès. sinon un message d'erreur viendra s'afficher.
+
+    (err, data) => {
+            res.writeHead(200, { "Content-Type": "text/html" });
+            res.write(data);
+            res.end();
+        });
+
+**res.write(data)** va nous permettre d'envoyer à l'utilisateur les données lues dans le fichier html.

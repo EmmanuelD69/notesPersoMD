@@ -4,8 +4,11 @@ const fs = require("fs");
 
 const server = http.createServer((req, res) => {
   if (req.url === "/") {
-    res.write("<h1>Welcome to the Homepage!</h1>");
-    res.end();
+    fs.readFile(path.join(__dirname, "index.html"), (err, data) => {
+      res.writeHead(200, { "Content-Type": "text/html" });
+      res.write(data);
+      res.end();
+    });
   }
   if (req.url === "/user") {
     res.write("Welcome user Emmanuel!");
