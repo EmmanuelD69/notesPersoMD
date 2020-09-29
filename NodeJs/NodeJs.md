@@ -368,6 +368,15 @@ Lorsque l'on se connectera au server sur l'adresse d'accueil(localhost:3000), le
 
 Lorsque l'on se connectera au server sur une adresse du serveur correspondant à l'espace dédié à un utilisateur(localhost:3000/user), un message d'accueil plus personnel s'affichera "Welcome user Emmanuel!".
 
+Il est aussi de bonne pratique d'introduire dans notre réponse un message de type "metadata" pour informer que la connexion à bien été établie avec le server et que tout est "Ok".
+
+Pour cela on utilise cette notation:
+
+    res.writeHead(statusCode, {Response_Header_informations})
+    res.writeHead(200, {"content-Type": "text/html"});
+
+Le code 200 étant celui pour indiquer que tout va bien et les informations contenues dans le header permettant d'indiquer quel type de données sont passés.
+
 Maintenant au lieu d'écrire un message tout simple, on peut introduire du code html dans notre réponse.
 
     res.write("<h1>Welcome to the Homepage!</h1>");
@@ -393,3 +402,5 @@ On peut créer des fichiers html et les envoyer à l'utilisateur quand il se con
     portfolio.html
 
 Etc...Etc...Etc...
+
+## Mise en place de la logique de serveur:
