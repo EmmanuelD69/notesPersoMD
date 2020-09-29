@@ -76,7 +76,6 @@ au sein de cette fonction nous avons accès à différentes options:
 
 Cette fonction est actuellement invisible, elle travaille en arrière plan, comme l'objet "Window" dans Javascript.
 
-
 ## Création d'un module (fichier node.js):
 
 Nous allons créer un fichier Javascript qui contiendra une fonction de base pour dire "Hello World Js!". On lui attribut le nom de _"helloWorld.js"_.
@@ -85,7 +84,7 @@ Nous allons créer un fichier Javascript qui contiendra une fonction de base pou
         console.log("Hello World JS!");
     }
 
-Ce fichier _"helloWorld.js"_ représente maintenant un **"module"** que l'on peut exporter puis importer dans notre fichier "Maître" **app.js**. 
+Ce fichier _"helloWorld.js"_ représente maintenant un **"module"** que l'on peut exporter puis importer dans notre fichier "Maître" **app.js**.
 
 Au final, nous aurons tout une liste de fichiers modules et un seul fichier Maître pour les commander tous. Il nous suffit d'appeler le fichier Maître pour faire fonctionner toutes nos fonctions qui auront été exportés/importés dans app.js.
 
@@ -95,26 +94,25 @@ appel du fichier Maître en console:
 
 ## Export d'un module
 
-pour rappel, tout notre code s'exécutera au sein de la fonction wrapper vu plus haut, qui contient plusieurs paramètres dont le paramètre __"module"__.
+pour rappel, tout notre code s'exécutera au sein de la fonction wrapper vu plus haut, qui contient plusieurs paramètres dont le paramètre **"module"**.
 
-Pour exporter le code contenu dans notre fichier __"helloWorld.js"__ il nous suffit d'indiquer ce que nous souhaitons exporter de son contenu de la manière suivante:
+Pour exporter le code contenu dans notre fichier **"helloWorld.js"** il nous suffit d'indiquer ce que nous souhaitons exporter de son contenu de la manière suivante:
 
     module.exports = hello;
 
 ## Import d'un module
 
-Pour importer le module *helloWorld* que nous avons créé, il nous suffit de l'indiquer dans le code de notre fichier Maître **app.js** de la manière suivante:
+Pour importer le module _helloWorld_ que nous avons créé, il nous suffit de l'indiquer dans le code de notre fichier Maître **app.js** de la manière suivante:
 
     const nom_du_module = require("emplacement_du_module_à_importer");
     const hello = require("./helloWorld");
-
 
 ## A quoi ressemble app.js?
 
 Au final, notre fichier Maître ressemblera à une succéssion d'import et des appels vers les modules pour exécuter leurs code.
 
     const hello = require("./helloWorld");
-    
+
     hello();
 
 il suffit alors d'exécuter en console notre fichier **app.js** pour que le code global s'exécute.
@@ -128,7 +126,7 @@ On imagine bien qu'un module ne sera pas toujours aussi simple que celui que nou
 
 Mais alors, comment faire pour exporter toutes ces fonctions depuis notre module?
 
-Partons du principe que nous avons une deuxième fonction que l'on nomme *"howAreYou"*
+Partons du principe que nous avons une deuxième fonction que l'on nomme _"howAreYou"_
 
 <u>fichier helloWorld.js:</u>
 
@@ -150,7 +148,7 @@ on exporte les deux fonctions de la manière suivante:
 Avant, nous avions un module contenant une seule fonction, maintenant nous avons un module contenant deux fonctions. si l'on effectue un console.log de notre module, on obtient un objet contenant deux fonctions.
 
     /* Import du module helloWorld */
-    const intro = require("./helloWorld");    
+    const intro = require("./helloWorld");
 
     /* affichage en console du contenu du module helloWorld */
     console.log(intro);
@@ -167,7 +165,7 @@ D:\CODING\GitHub\notesPersoMD\NodeJs> node app.js
 
 1 objet, 2 fonctions > hello et howAreYou.
 
-Pour exécuter ces fonctions, il faut précéder le nom de la fonction par le nom du module auxquel elle est rataché. 
+Pour exécuter ces fonctions, il faut précéder le nom de la fonction par le nom du module auxquel elle est rataché.
 
     moduleName.fonctionName();
     intro.hello();
@@ -178,21 +176,21 @@ Le résultat en console nous affichera:
     Hello World JS!
     How are you??
 
-## Qu'est ce que c'est __dirname??
+## Qu'est ce que c'est \_\_dirname??
 
-Nous avons vu au début de ce chapitre que dans node.js, le code global est contenu dans une fonction wrapper ayant plusieurs paramètres. 
+Nous avons vu au début de ce chapitre que dans node.js, le code global est contenu dans une fonction wrapper ayant plusieurs paramètres.
 
-**__dirname** est l'un de ses paramètres et nous permet d'obtenir l'adresse du dossier contenant notre fichier app.js.
+**\_\_dirname** est l'un de ses paramètres et nous permet d'obtenir l'adresse du dossier contenant notre fichier app.js.
 
-Si l'on effectue un **console.log(__dirname)** dans notre fichier app.js, on obtient:
+Si l'on effectue un **console.log(\_\_dirname)** dans notre fichier app.js, on obtient:
 
     D:\CODING\GitHub\notesPersoMD\NodeJs
 
-## Qu'est ce que c'est __filename??
+## Qu'est ce que c'est \_\_filename??
 
-**__filename** nous permet d'obtenir l'adresse complète du fichier dans lequel l'appel à été lancé.
+**\_\_filename** nous permet d'obtenir l'adresse complète du fichier dans lequel l'appel à été lancé.
 
-Si l'on effectue un **console.log(__filename)** dans notre fichier app.js, on obtient:
+Si l'on effectue un **console.log(\_\_filename)** dans notre fichier app.js, on obtient:
 
     D:\CODING\GitHub\notesPersoMD\NodeJs\app.js
 
@@ -200,7 +198,7 @@ Si l'on effectue un **console.log(__filename)** dans notre fichier app.js, on ob
 
 <span style="color:red">L'utilisation des modules livrés avec Node.JS ne nécéssite pas la création d'un ficher module, il faut simplement effectuer l'appel dans le fichier **app.js** et Node.JS s'occupera de faire la connexion avec le module inclus demandé.</span>
 
-## path.js 
+## path.js
 
     const path = require ("path");
 
@@ -226,7 +224,7 @@ affichage dans le terminal en cas d'exécution:
     app.js
     .js
 
-## url.js 
+## url.js
 
     const url = require ("url");
 
@@ -267,6 +265,8 @@ Le terminal nous affichera alors le résultat suivant:
 
 Avec ce module inclus dans Node.js on peut créer des fichiers, lire le contenu d'un fichier et plus.... on intéragit directement avec le contenu d'un fichier.
 
+**<u>fs.writeFile:</u>**
+
 Prenons pour premier example l'écriture d'un fichier texte. Il nous faut pour cela utiliser la structure suivante:
 
     fs.writeFile("fileName", "value", callbackFn)
@@ -277,9 +277,27 @@ Prenons pour premier example l'écriture d'un fichier texte. Il nous faut pour c
         console.log("un fichier a été écrit");
     });
 
-Lors de l'exécution du fichier contenant le module fs, un fichier texte est créé avec le message contenu dans le paramètre *"value"* de la fonction asynchrone.
+Lors de l'exécution du fichier contenant le module fs, un fichier texte est créé avec le message contenu dans le paramètre _"value"_ de la fonction asynchrone.
 
 En effet il s'agit d'une fonction asynchrone, ce qui signifie qu'elle ne rend pas immédiatement un résultat mais ne va pas bloquer l'exécution du code.
-Pour schématiser, imaginons que l'on travaille dans la restauration en tant que serveur. Lorsqu'un serveur prend un commande, il l'emmène à la cuisine pour que le chef puisse préparer la commande. Le serveur ne va pas rester planté à attendre que le chef ait fini de préparer la commande, il va retourner en salle pour prendre les commandes suivantes ou s'occuper d'une autre tache. 
+Pour schématiser, imaginons que l'on travaille dans la restauration en tant que serveur. Lorsqu'un serveur prend un commande, il l'emmène à la cuisine pour que le chef puisse préparer la commande. Le serveur ne va pas rester planté à attendre que le chef ait fini de préparer la commande, il va retourner en salle pour prendre les commandes suivantes ou s'occuper d'une autre tache.
 
-Ici, la fonction Asynchrone c'est notre commande et Javascript c'est notre serveur. Le chef quant à lui est ce qu'on appelle avec NodeJS la boucle d'évènements.
+Ici, la fonction Asynchrone c'est notre commande et Javascript c'est notre serveur. Le chef quant à lui est ce qu'on appelle avec NodeJS <span style="color:red">la boucle d'évènements</span>.
+
+**<u>fs.readFile:</u>**
+
+Maintenant nous allons voir comment faire pour lire un fichier à l'aide de Node.JS. Il nous faut pour cela utiliser la structure suivante:
+
+    fs.readFile("chemin_du_fichier_à_lire", "format_d'écriture_du_texte", (err, data) => {
+        if(err) throw err;
+
+        console.log(data);
+    });
+
+exemple:
+
+    fs.readFile("./message.txt", "utf8", (err, data) => {
+        if(err) throw err;
+
+        console.log(data);
+    });
