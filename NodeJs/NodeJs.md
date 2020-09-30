@@ -507,3 +507,13 @@ Nodemon est un utilitaire qui surveillera tout changement dans votre code source
 installation via terminal:
 
     npm install -g nodemon
+
+4 - <u>.gitignore</u> - <span style="color:red">**important!!!**</span>
+
+Comme l'on utilise très souvent Git, il est important de créer un fichier **.gitignore** car celui ci va nous permettre d'éviter de _"push"_ le dossier contenant nos dépendances, mais aussi des fichiers contenant des données de config que l'on ne souhaite pas rendre public.
+
+Lors de l'installation de nodemon ou de tout autres dépendances avec NPM, un dossier **node_modules** est créé dans l'architecture de notre projet.
+
+Ce dossier contient toutes les dépendances que nous aurons choisi d'installer et d'utiliser pour notre projet, ce qui signifie que ce sont des données pouvant atteindre des tailles importantes (Megaoctets) et on ne souhaite pas _"push"_ ces fichiers volumineux sur Github.
+
+Il est donc de bonne pratique de créer un fichier .gitignore et d'y indiquer le nom des fichiers/dossiers que l'on ne souhaite pas transférer lors de nos _"push"_ vers github ou autres gestionnaires git.
