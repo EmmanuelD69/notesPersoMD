@@ -447,3 +447,55 @@ puis en 2ème argument, on va passer une fonction qui va exécuter son contenu u
         });
 
 **res.write(data)** va nous permettre d'envoyer à l'utilisateur les données lues dans le fichier html.
+
+# Usage de Node.JS
+
+Il n'est pas nécéssaire d'être un professionnel de Node.JS car la plupart du temps nous allons utiliser des framework qui vont nous faciliter la vie.
+
+En effet, pas de logique de "If" à rallonge comme nous avons commencé à explorer dans ce chapitre. Il nous a permis d'explorer les modules intégrés par défaut à Node.JS, son coeur.
+
+Il nous est possible de rajouter des framework, librairies, modules très facilement, soit du fait maison, soit de l'existant et pour le faire nous avons un outil formidable qui s'appelle **NPM**.
+
+## **NPM** Node Package Manager.
+
+1 - <u>Comment ça fonctionne?</u>
+
+Lorsque l'on crée un projet il nous suffit d'initialiser NPM. Pour cela il suffit de taper la commande suivante dans le terminal:
+
+    npm init
+
+Bien évidemment il faut le faire en étant dans le dossier du projet que vous souhaitez mettre en place. Si on prend notre exemple précédent cela donnerait cela:
+
+    D:\CODING\GitHub\notesPersoMD\NodeJs>npm init
+
+A la suite de quoi, dans le terminal, une série de questions vont apparaitre:
+
+    package name: (nodejs)
+    version: (1.0.0)
+    description: C'est juste un petit cours sur node js
+    entry point: (app.js)
+    test command:
+    git repository:
+    keywords:
+    author: EmmanuelDev
+    license: (ISC)
+
+2 - <u>package.json</u>
+
+De sorte à paramétrer un fichier "**package.json**" qui va contenir toutes les informations que nous venons d'entrer en réponses:
+
+    {
+    "name": "nodejs",
+    "version": "1.0.0",
+    "description": "C'est juste un petit cours sur node js",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "EmmanuelDev",
+    "license": "ISC"
+    }
+
+ainsi que la liste des "**dépendances**" que nous allons utiliser pour notre projet.
+
+Il y'a aussi une partie "**scripts**" qui va nous permettre d'indiquer le fonctionnement de ces dépendances, par exemple qu'est ce qui va permettre de lancer tel ou tel dépendances, à quel moment, avec quel mot clé, etc...
