@@ -500,7 +500,40 @@ ainsi que la liste des "**dépendances**" que nous allons utiliser pour notre pr
 
 Il y'a aussi une partie "**scripts**" qui va nous permettre d'indiquer le fonctionnement de ces dépendances, par exemple qu'est ce qui va permettre de lancer tel ou tel dépendances, à quel moment, avec quel mot clé, etc...
 
-3 - <u>nodemon package</u>
+3 - <u>usage de "scripts" dans package.json</u>
+
+**"scripts"** nous donne la possibilitée de créer des mots clés qui vont nous permettre d'exécuter des actions.
+
+    "scripts": {
+        "mot_clé" : "action"
+    }
+
+exemple:
+
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+        "start": "node app.js"
+        "startsurvey": "nodemon app.js"
+    }
+
+Dans notre exemple nous avons créé 3 mots clés qui nous permettent d'éffectuer différentes actions.
+
+- test va nous permettre d'afficher un message d'erreur.
+
+- start va nous permettre d'exécuter le fichier app.js en utilisant node.
+
+- startsurvey va nous permettre d'exécuter le fichier app.js en utilisant nodenom
+
+comment utiliser le mot clé d'un script?
+
+c'est très simple, il suffit d'entrer dans le terminal la commande suivante:
+
+    npm run mot_clé
+    npm run test
+    npm run start
+    npm run startsurvey
+
+4 - <u>nodemon package</u>
 
 Nodemon est un utilitaire qui surveillera tout changement dans votre code source et redémarrera automatiquement votre serveur. Plus besoin d'arrêter le serveur avec CTRL+C et de le relancer via le terminal, nodemon s'occupe de tout!!!
 
@@ -508,7 +541,7 @@ installation via terminal:
 
     npm install -g nodemon
 
-4 - <u>.gitignore</u> - <span style="color:red">**important!!!**</span>
+5 - <u>.gitignore</u> - <span style="color:red">**important!!!**</span>
 
 Comme l'on utilise très souvent Git, il est important de créer un fichier **.gitignore** car celui ci va nous permettre d'éviter de _"push"_ le dossier contenant nos dépendances, mais aussi des fichiers contenant des données de config que l'on ne souhaite pas rendre public.
 
