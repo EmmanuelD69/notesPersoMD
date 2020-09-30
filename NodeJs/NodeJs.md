@@ -499,3 +499,11 @@ De sorte à paramétrer un fichier "**package.json**" qui va contenir toutes les
 ainsi que la liste des "**dépendances**" que nous allons utiliser pour notre projet.
 
 Il y'a aussi une partie "**scripts**" qui va nous permettre d'indiquer le fonctionnement de ces dépendances, par exemple qu'est ce qui va permettre de lancer tel ou tel dépendances, à quel moment, avec quel mot clé, etc...
+
+3 - <u>nodemon package</u>
+
+Nodemon est un utilitaire qui surveillera tout changement dans votre code source et redémarrera automatiquement votre serveur. Plus besoin d'arrêter le serveur avec CTRL+C et de le relancer via le terminal, nodemon s'occupe de tout!!!
+
+installation via terminal:
+
+    npm install -g nodemon
