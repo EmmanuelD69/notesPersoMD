@@ -14,7 +14,7 @@ _italique_
 
 # REACT
 
-## Bonnes pratiques
+## I. Bonnes pratiques
 
 ### **<u>const et let:</u>**
 
@@ -147,7 +147,7 @@ si l'on souhaite afficher l'une des données contenues dans l'objet en console:
 Prenons maintenant l'exemple d'un tableau:
 
     const numbers = [1, 2, 3, 4, 5];
-    
+
     const [one, two, three, four, five] = numbers;
     ou
     const [toto, tata, tutu, titi, tete] = numbers;
@@ -155,4 +155,28 @@ Prenons maintenant l'exemple d'un tableau:
     console.log(one);
     console.log(toto);
 
-on peut donner n'importe quel nom au keys contenu entre crochets car la constante fait référence au contenu du tableau qui lui ne change pas et est ordonné comme indiqué lors de sa création.     
+on peut donner n'importe quel nom au keys contenu entre crochets car la constante fait référence au contenu du tableau qui lui ne change pas et est ordonné comme indiqué lors de sa création.
+
+### **<u>Méthodes Map et Filter</u>**
+Prenons un tableau d'objets:
+    
+    const users = [
+        { name: "Emmanuel", age: 44},
+        { name: "Thomas", age: 16},
+        { name: "Audrey", age: 28},
+    ]
+
+    const modifiedUser = users.map((user) => user);
+    const filterUser = users.filter((user) => user.age === 28);
+    console.log(modifiedUser);
+    console.log(filterUser);
+
+la constante _modifiedUser_ contenant la méthode _map_ nous permet de lire le contenu de la constante users objet après objet, c'est une boucle sur le contenu du tableau.
+
+    const modifiedUser = boucle sur le tableau cité en référence((pour chaque objet du tableau) => renvoi l'objet);
+    console.log(affiche en console le contenu de modifiedUser à chaque boucle)
+
+la constante _filterUser_ contenant la méthode _filter_ nous permet de lire le contenu de la constante users objet après objet, c'est une boucle sur le contenu du tableau qui permet d'identifier et de renvoyer du contenu correspondant à une condition qu'on lui applique.
+
+    const filterUser = boucle sur le tableau cité en référence((pour chaque objet du tableau) => renvoi uniquement l'objet dont l'age est égal et strictement égal à 28);
+    console.log(affiche en console le contenu de modifiedUser à chaque boucle)
