@@ -1,6 +1,6 @@
 # REACT
 
-## I. Bonnes pratiques
+## I. BONNES PRATIQUES
 
 ### **<u>const et let:</u>**
 
@@ -166,3 +166,24 @@ la constante _filterUser_ contenant la méthode _filter_ nous permet de lire le 
 
     const filterUser = boucle sur le tableau cité en référence((pour chaque objet du tableau) => renvoi uniquement l'objet dont l'age est égal et strictement égal à 28);
     console.log(affiche en console le contenu de modifiedUser à chaque boucle)
+
+## II. LES BASES
+
+### **<u>Pourquoi apprendre React??</u>**
+React est un framework, un ensemble de librairies jasvascript, qui permet de créer des applications web, ou autres, de manière centralisé en langage javascript sans avoir à utiliser des fichiers HTML/CSS.
+Tout est centralisé dans un seul fichier Javascript qui va s'occuper de générer l'ensemble du code (HTML/CSS) en utilisant la syntaxe JSX spécifique à React.
+
+De plus, React permet de structurer/découper son code avec ce que l'on appel des "components" ou "modules".
+
+Pour schématiser, un fichier javascript pourra faire référence à une multitude d'autres fichiers javascript afin de construire selon nos envies et besoin des projets web. 
+
+Un fichier js pourra construire la partie "Head" de notre projet web, un autre la partie "Body" qui elle même contiendra des appels vers d'autres fichiers js pour le "Header", "Main", "Footer" et ainsi desuite en cascade.
+
+On peut donc construire toutes les parties d'un site web par example en petits _components_ interchangeables à souhait.
+
+    Avantages de React:
+    Plus permformant, moins d'échanges entres fichiers différents (HTML/CSS) puisque tout est généré en JSX depuis un fichier JS globale unique.
+
+    Un control plus structuré de nos code grace à la création de components que l'on peut insérer/retirer à souhait.
+
+    Une organisation du code simplifiée et un structure commune à ceux qui travaillerons ensemble sur le projet.
