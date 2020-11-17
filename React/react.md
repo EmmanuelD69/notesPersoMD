@@ -182,8 +182,17 @@ Un fichier js pourra construire la partie "Head" de notre projet web, un autre l
 On peut donc construire toutes les parties d'un site web par example en petits _components_ interchangeables à souhait.
 
     Avantages de React:
-    Plus permformant, moins d'échanges entres fichiers différents (HTML/CSS) puisque tout est généré en JSX depuis un fichier JS globale unique.
+    Plus permformant, moins d'échanges entres fichiers différents (HTML/CSS) puisque tout est généré en JSX depuis un fichier JS global unique.
 
     Un control plus structuré de nos code grace à la création de components que l'on peut insérer/retirer à souhait.
 
     Une organisation du code simplifiée et un structure commune à ceux qui travaillerons ensemble sur le projet.
+
+### **<u>A quoi ressemble le code contenu dans React?</u>**
+Dans un premier temps nous allons d'abord regarder à quoi ressemble du code Javascript "vanille":
+
+![](vanillajs.jpg)
+
+Comme on peut le voir, cela consiste en un échange entre 3 fichiers distinct, un fichier HTML pour la structure, un fichier CSS pour le styling et enfin un fichier JS pour l'interactivité.
+
+Maintenant prenons l'exemple de ce même code simple mais générer avec React:
