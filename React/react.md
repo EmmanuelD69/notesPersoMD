@@ -73,4 +73,36 @@ nous utiliserons la notation <span style="color:red">``</span> cad Alt Gr + 7
 
     console.log(`hey ${name}, how are you?`);
 
+### **<u>arrow functions</u>**
+la version javascript classique(oldschool) pour écrire une fonction est la suivante:
 
+    function sayHello(){
+        console.log("hello");
+    }
+
+nous priviligierons l'utilisation de la version ES6 Javascript pour l'écriture des fonctions qui consiste en l'utilisation de constantes auxquelles nous attribuerons nos fonctions.
+
+    exemple:
+    const sayHello = () => {
+        console.log("hello");
+    }
+
+Cas particulier: Si notre fonction à pour but de renvoyer(return) une information et qu'elle ne comprend qu'une seule ligne de code...
+
+    example:
+    const sayHello = (name) => {
+        return `hello ${name}`;
+    }
+
+    const greetings = sayHello("paul");
+    console.log(greetings);
+
+on peut alors simplifier l'écriture de la fonction en retirant le "return" ainsi que les accolades...
+
+    example:
+    const sayHello = (name) => `hello ${name}`;
+    
+    const greetings = sayHello("paul");
+    console.log(greetings);
+
+cela aura exactement le même résultat, car de manière implicite si une seule ligne de code est présente dans une fonction de renvoi de données cela implique par défaut que son résultat soit renvoyé(return), il n'est donc pas nécéssaire d'écrire la version longue de la fonction.
