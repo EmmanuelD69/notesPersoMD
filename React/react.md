@@ -188,11 +188,63 @@ On peut donc construire toutes les parties d'un site web par example en petits _
 
     Une organisation du code simplifiée et un structure commune à ceux qui travaillerons ensemble sur le projet.
 
-### **<u>A quoi ressemble le code contenu dans React?</u>**
+### **<u>Fonctionnement de React? Ca ressemble à quoi?</u>**
 Dans un premier temps nous allons d'abord regarder à quoi ressemble du code Javascript "vanille":
 
 ![](vanillajs.jpg)
 
 Comme on peut le voir, cela consiste en un échange entre 3 fichiers distinct, un fichier HTML pour la structure, un fichier CSS pour le styling et enfin un fichier JS pour l'interactivité.
 
-Maintenant prenons l'exemple de ce même code simple mais générer avec React:
+Maintenant prenons l'exemple de ce même code simple mais générer avec React. Mais avant cela il nous faut récupérer quelques librairies à ajouter au projet.
+
+Pour cela, il nous suffit d'aller chercher celles ci sur https://cdnjs.com/libraries que l'on insère ensuite dans notre code html avec la balise < script > < /script> comme pour font-awesome par exemple.
+
+Nous allons d'abord ajouter React:
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.production.min.js" integrity="sha512-YMtLFKDKe5a4zi7rJ0y4wdGErKZe3tx7L+AXDTxjNDzkv7jsaNhvumeU1xQvw6UqVwBVmYlO9NhsSuSVPUN/xQ==" crossorigin="anonymous"></script>
+
+C'est le module global permettant de faire fonctionner React.
+
+Ainsi que React-dom qui est le module utiliser pour afficher dans notre navigateur le code que l'on va produire avec React:
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.production.min.js" integrity="sha512-vN6rbu+vWW4Ck3s6RbLZs+0gRl5PWOZRUqap38gZtsheSqA2zDeI3PCshuxfYx7ytkoFMrmd0gA2sZZeP1RZYQ==" crossorigin="anonymous"></script>
+
+Une fois que cela est fait, nous sommes alors prêt à écrire notre code dans un fichier Javascript.
+Pour reprendre notre exemple du départ avec un titre et un bouton, voici comment se présente le code en utilisant React:
+
+    React.createElement(a,b,c);
+
+<span style="color:red">a</span>: correspond à l'élément HTML que l'on souhaite créer. (h1 / button / div / etc...)
+
+<span style="color:red">b</span>: correspond aux paramètres de l'élément que l'on souhaite créer (id, className, style, etc...)
+
+<span style="color:red">c</span>: correspond au contenu textuel de l'élément que l'on souhaite créer.
+
+Notre exemple ressemblera à:
+
+    React.createElement("h1", null, "hello React");
+
+Ce code va nous permettre de _générer_ l'élément h1 et son contenu, mais pour pouvoir le visualiser dans le navigateur il faut indiquer que c'est le module **react-dom** qui va s'en occuper.
+
+    ReactDOM.render(a,b);
+
+<span style="color:red">a</span>: correspond à ce que l'on veux générer dans le browser, que cela soit 1 élément ou un ensemble d'éléments réunis dans une fonction.
+
+<span style="color:red">b</span>: correspond la localisation au sein de notre code contenu dans le fichier _index.html_ ou l'on va insérer le code généré par <span style="color:red">a</span>
+
+ci dessous exemple avec 1 élément:
+![](react.jpg)
+
+ci dessous exemple avec 1 fonction incluant plusieurs éléments:
+![](reactfunction.jpg)
+![](reactfunction2.jpg)
+
+A partir de là, on s'aperçoi qu'on peut utiliser uniquement javascript pour créer du code HTML, mais aussi CSS, tout en utilisant toutes les fonctionnalités de Javascript comme par exemple la création de variables à insérer dans notre code:
+
+ici là constante **time**
+![](reactvar.jpg)
+
+ici avec du style comme en css
+![](reactstyle.jpg)
+
+<span style="color:red">Pas de panique, ce que l'on essai de comprendre ici est la logique de fonctionnement de React, le code, lui, ressemble à tout autre chose beaucoup plus simple.  On voit ici la mécanique qui se passe en arrière plan, ce n'est pas la façon utilisé pour écrire du code en React.</span>
