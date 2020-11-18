@@ -277,3 +277,55 @@ Pour faire simple, on prend du HTML du CSS et du Javascript que l'on met dans un
 Avec cela on peut ainsi créer des projets complexe en ajoutant petit à petit des components les uns aux autres dans un seul et même fichier Javascript.
 
 pour schématiser, c'est comme une structure en LEGO dont chaque pièce représente un component. On peut modeler la srtucture à souhait et y ajouter ou retirer des pièces en fonction du résultat final que l'on souhaite lui donner.
+
+Un component cela peut être une barre de navigation, un bloc video, un espace commentaire, un section d'un site web, un bouton avec une fonctionnalité spécifique, etc...
+
+On peut les réutiliser plusieurs fois, facile à mettre à jour, modulables.
+
+Donc pour être pratique, il est bon d'avoir des components qui ont une fonctionnalité que l'on pourra ensuite glisser dans une projet react de sorte à construire un ensemble logique et modulable à souhait.
+
+Créons pour nous exercer un exemple de component dont la fonction est de faire un "_Tweet_":
+
+    function Tweet(){
+        return(
+            <div>
+                <h2>Tweet</h2>
+                <p>This stuff is pretty cool!</p>
+            </div>
+        );
+    }
+
+Maintenant, en l'état actuel la fonction n'affichera rien tant qu'elle n'est pas appelée et incluse dans notre fonction app. Pour rappel, nous avons cibler dans le code l'élément div "_root_" afin qu'il affiche le contenu que va générer la fonction "_app_"
+
+    Règle:
+    ReactDOM.render(a,b);
+
+    appliquée à notre exemple:
+    ReactDOM.render(React.createElement(app), document.querySelector("#root"))
+
+Pour que notre component soit pris en compte il nous faut donc l'insérer dans notre component principal "_app_" de la manière suivante:
+
+    function app(){
+        const time = new Date().toLocaleDateString();
+        const buttonStyle = {fontSize: 20, color: "red"};
+        const alertHandler = () => {
+            alert("hey");
+        }
+        return(
+            <div>
+                <h1 style={buttonStyle}>{time}</h1>
+                <button onClick={alertHandler}>Submit</button>
+                <Tweet/>
+            </div>
+        )
+    }
+
+Cela ressemble à une balise sous la forme **< Tweet/ >** et cela peut être introduit dans n'importe quel component car celui ci est indépendant et possède sa propre structure, styles et fonctionnalité.
+
+Peu importe ou l'on place notre component Tweet, son code fonctionnera. On peut l'utiliser à de multiple reprises, il fonctionnera toujours autant de fois qu'on le souhaite.
+
+De plus, du fait que nous utilisons Babel en association avec JSX, nous pouvons simplifier la syntaxe de la ligne de code permettant l'affichage du code dans le navigateur de la manière suivante:
+
+    ReactDOM.render(<app />, document.querySelector("#root"))
+
+C'est tout ce qu'il faut principalement se rappeler de l'utilisation de React pour construire des applications et sites web.
