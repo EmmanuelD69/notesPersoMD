@@ -270,3 +270,10 @@ Ici un exemple de fenêtre d'alerte quand on click sur le boutton:
 il suffit d'indiquer le paramètre **onClick** dans l'élément JSX _button_ et de lui attribuer en valeur la fonction que nous avons créé, ici **alertHandler**.
 
 Et pour finir, ce que nous venons de coder en JSX est une fonction contenant un ensemble de codes structuré qui à une finalité précise, on appel cela un **component** ou encore un module.
+
+### **<u>C'est quoi un component??</u>**
+Pour faire simple, on prend du HTML du CSS et du Javascript que l'on met dans un seul et même fichier et c'est un component, TADA!
+
+Avec cela on peut ainsi créer des projets complexe en ajoutant petit à petit des components les uns aux autres dans un seul et même fichier Javascript.
+
+pour schématiser, c'est comme une structure en LEGO dont chaque pièce représente un component. On peut modeler la srtucture à souhait et y ajouter ou retirer des pièces en fonction du résultat final que l'on souhaite lui donner.
