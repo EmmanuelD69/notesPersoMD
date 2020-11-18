@@ -248,3 +248,25 @@ ici avec du style comme en css
 ![](reactstyle.jpg)
 
 <span style="color:red">Pas de panique, ce que l'on essai de comprendre ici est la logique de fonctionnement de React, le code, lui, ressemble à tout autre chose beaucoup plus simple.  On voit ici la mécanique qui se passe en arrière plan, ce n'est pas la façon utilisé pour écrire du code en React.</span>
+
+### **<u>Introduction à JSX</u>**
+JSX est une extension syntaxique de JavaScript et produit des « éléments » React. 
+
+extension syntaxique = même langage mais écrit différement, généralement de sorte à être plus simple à lire.
+
+Oui mais qui dit écriture différente, dit forcémment besoin d'interpréter cette nouvelle façon d'écrire. Et pour cela on va faire appel à **BABEL** qui est un compileur/traducteur javascript. Il va s'occuper de récupérer notre code JSX et de le traduire en code Javascript vanilla, ce même code prise de tête que l'on a pu voir dans la partie précédente.  
+
+Alors passons à JSX pour ré-écrire la fonction _app_ que nous avons créer en Javascript.
+![](reactjsx.jpg)
+
+On peut voir que cela s'apparente à peu de choses à du code HTML, code qui nous est familier.
+
+La différence vient dans la syntaxe utilisé pour ajouter des variables qui nécéssite l'introduction d'accolades {} ainsi que certaines nom de propriétés en Css qui diffèrent comme par example _font-size_(CSS) qui s'écrit _fontSize_ en JSX.
+
+Une autre chose qui est extrêmement pratique, c'est l'affectation de fonctions directement depuis le code JSX, c'est à dire la création de fonctions que l'on peut ensuite affecter directement à des éléments JSX.
+
+Ici un exemple de fenêtre d'alerte quand on click sur le boutton:
+![](reactjsxalertfunction.jpg)
+il suffit d'indiquer le paramètre **onClick** dans l'élément JSX _button_ et de lui attribuer en valeur la fonction que nous avons créé, ici **alertHandler**.
+
+Et pour finir, ce que nous venons de coder en JSX est une fonction contenant un ensemble de codes structuré qui à une finalité précise, on appel cela un **component** ou encore un module.
