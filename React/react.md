@@ -329,3 +329,21 @@ De plus, du fait que nous utilisons Babel en association avec JSX, nous pouvons 
     ReactDOM.render(<app />, document.querySelector("#root"))
 
 C'est tout ce qu'il faut principalement se rappeler de l'utilisation de React pour construire des applications et sites web.
+
+### **<u>Mise en place d'une base pour un projet React</u>**
+
+1- installer Visual Studio Code (https://code.visualstudio.com/download)
+
+2- installer NodeJS (https://nodejs.org/en/download/)
+
+3- Controllez que node a correctement été installé en utilisant la commande ci dessous dans votre terminal VSC. Si en réponse vous obtenez un numéro de version c'est que nodeJS est bien installé, sinon c'est qu'il ne l'est pas. Retournez à l'étape 2 en cas d'échec de l'installation.
+   
+    node -v
+
+4- Créer depuis VSC un dossier pour votre projet React.
+5- Aller sur https://create-react-app.dev/docs/getting-started/ et utiliser dans le terminal VSC les commandes de démarrage rapide pour installer un dossier contenant tous les modules de bases dont vous allez avoir besoin pour votre projet React (Babel, Webpackn, etc... ). En cas de problèmes se référer à la doc du site.
+
+    npx create-react-app nom_du_projet
+    cd nom_du_projet
+    npm start
+
