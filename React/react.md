@@ -367,3 +367,5 @@ Généralement, on ignore les fichiers et dossiers de gros volumes tels que les 
 6- src: Ce dossier est **LE dossier** dans lequel nous allons stocker nos "_components_", nos fichiers CSS, et tout plein d'autres bonnes choses. Il contient d'ailleurs un modèle de base qui est fourni lors de l'installation du projet, pour le visualiser il suffit dans le terminal de taper la commande suivante:
 
     npm start
+
+Cela va ouvrir une nouvelle page dans votre navigateur et démarrer un serveur lecture en direct qui vous permettra de travailler et modifier en live sur votre projet.
