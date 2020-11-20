@@ -369,3 +369,24 @@ Généralement, on ignore les fichiers et dossiers de gros volumes tels que les 
     npm start
 
 Cela va ouvrir une nouvelle page dans votre navigateur et démarrer un serveur lecture en direct qui vous permettra de travailler et modifier en live sur votre projet.
+
+### **<u>Déclarer une classe en JSX, className vs class</u>**
+Comme nous l'avons vu plus haut en introduction à JSX, il s'agit d'une extension syntaxique de JavaScript qui produit des « éléments » React.
+
+<span style="color:red">**Cela ressemble à du HTML mais cela n'en est pas, c'est du JSX!**</span>
+
+C'est pourquoi il existe quelques différences comme celle de la désignation de classes. 
+
+En HTML:
+
+    <div class="container">
+        <h2>Tweet</h2>
+        <p>This stuff is pretty cool!</p>
+    </div>
+
+En JSX:
+
+    <div className="container">
+        <h2>Tweet</h2>
+        <p>This stuff is pretty cool!</p>
+    </div>
