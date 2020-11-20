@@ -420,10 +420,44 @@ Exemple d'import de notre fonction Box dans un fichier App.js:
 
     import React from "react";  (ceci est un package)
     import ReactDOM from "react-dom";  (ceci est un package)
-    import Box from "./Box"  (ceci est un component)
+    import Box from "./Box";  (ceci est un component)
 
 et pour affichier notre fonction dans le navigateur, il suffit de l'appeler depuis notre fichier App.js
 
     ReactDOM.render(<Box />, document.getElementByID("root"));
     
+### **<u>Création d'un component avec React</u>**
+Nous avons vu ce qu'était JSX, import, export, on a donc tout ce qu'il nous faut pour créer notre premier component React.
 
+Dans un premier temps il faut indiquer que l'on va utiliser React en important le package, puis on écris notre code JSX et finalement on rend disponible notre component en lui attribuant le terme export à la fin du code.
+
+    import React from "react";
+
+    function testComponent(){
+        return(
+            <div>
+                <h2>Hello React</h2>
+                <h3>From test Component</h3>
+            </div>
+        );
+    }
+
+    export default testComponent;
+
+son utilisation à l'export se fera comme vu précédemment en l'important dans le fichier souhaité:
+
+    import React from "react";  (ceci est un package)
+    import ReactDOM from "react-dom";  (ceci est un package)
+    import Box from "./Box";  (ceci est un component)
+    import testComponent from "./testComponent"; (ceci est un component)
+
+    function App(){
+        return(
+            <div>
+                <Box />
+                <testComponent />
+            </div>
+        );
+    }
+
+    export default App;
