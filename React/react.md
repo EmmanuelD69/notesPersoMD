@@ -390,3 +390,40 @@ En JSX:
         <h2>Tweet</h2>
         <p>This stuff is pretty cool!</p>
     </div>
+
+### **<u>Import / Export Quésaco?</u>**
+Avec ce projet, Webpack est inclus dans les dépendances, ce qui veux dire que nous pouvons créer nos "components" dans des fichiers séparés.
+
+Si l'on veux inclure un fichier/component/package dans un autre fichiers, disont notre fichiers _App_, il faut utiliser le terme **import**.
+
+Exemple:
+
+    import React from "react";
+
+Cela signifie:
+
+    importe React à partir du fichier react
+
+De même, lorsque l'on souhaite rendre disponible une fonction/component à l'export, il faut l'indiquer en fin de code en utilisant le terme **export**. 
+
+    function Box() {
+        return(
+            <div className="box">
+                <h1>Hello box</h1>
+            </div>
+        );
+    }
+
+    export default Box;
+
+Exemple d'import de notre fonction Box dans un fichier App.js:
+
+    import React from "react";  (ceci est un package)
+    import ReactDOM from "react-dom";  (ceci est un package)
+    import Box from "./Box"  (ceci est un component)
+
+et pour affichier notre fonction dans le navigateur, il suffit de l'appeler depuis notre fichier App.js
+
+    ReactDOM.render(<Box />, document.getElementByID("root"));
+    
+
