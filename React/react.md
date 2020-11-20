@@ -347,3 +347,23 @@ C'est tout ce qu'il faut principalement se rappeler de l'utilisation de React po
     cd nom_du_projet
     npm start
 
+### **<u>Que contient ce dossier de base?</u>**
+1- README.md: C'est un fichier écrit en Markdown, langage de balisage, qui à pour but de formater du texte à une fin informative. C'est dans ce fichier que l'on insère tout ce qu'il faut savoir sur le projet.
+
+2- package.json: Est un fichier qui récapitule les informations technique du projet auxquel il est rattaché. C'est dans ce fichier que l'on retrouve la liste des dépendances, des scripts, du nom du projet, de sa version, etc...
+Si l'on est en posséssion de ce fichier dans le cadre d'une copie d'un projet tier, il suffit simplement de taper dans votre terminal la commande:
+
+    npm install
+
+pour que le contenu complet du projet soit télécharger sur votre machine dans le dossier de votre choix.
+
+3- package-lock.json: Est un fichier qui prend un instantané du projet lors de sa création ce qui permet de conserver indéfiniement la version original du projet avec toutes ses dépendances dans leur version exact au moment de leur création pour ce projet. Cela permet ainsi que pouvoir revenir à la structure originale même des années après sa création. C'est un fichier qui nous assure que quoi qu'il arrive le projet fonctionnera.
+
+4- .gitignore: Est un fichier qui nous permet d'indiquer à git tous les dossiers et fichiers que l'on souhaite ignorer lors du transfer de fichiers vers notre github. Tout ce qui est noté à l'intérieur de gitignore sera ignoré lors d'un push vers github. 
+Généralement, on ignore les fichiers et dossiers de gros volumes tels que les dossiers "node_modules" ou "img" qui peuvent atteindre des centaines de Mo, mais aussi les fichiers config qui pourraient contenir des mots de passe ou des informations trop sensibles sur votre projet.
+
+5- public: Ce dossier contient notre fichier index.html, c'est le dossier ou l'on pourra aussi ajouter des images/icons ainsi que le fichier "robots.txt" pour le SEO.
+
+6- src: Ce dossier est **LE dossier** dans lequel nous allons stocker nos "_components_", nos fichiers CSS, et tout plein d'autres bonnes choses. Il contient d'ailleurs un modèle de base qui est fourni lors de l'installation du projet, pour le visualiser il suffit dans le terminal de taper la commande suivante:
+
+    npm start
