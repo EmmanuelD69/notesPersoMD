@@ -4,7 +4,7 @@
 
 ### **<u>const et let:</u>**
 
-Pour plus de simplicité l'utilisation de const et let pour déterminer des variables sera priviligié à var pour éviter tout conflits.
+Pour plus de simplicité l'utilisation de const et let pour déterminer des variables sera privilégié à var pour éviter tout conflits.
 
 Mis à part les fonctions, "var" a une portée globale ce qui rend le risque d'écrasement accidentel d'une donnée beaucoup plus important qu'avec const et let qui ont des portée limités aux accolades {} qui les contiennent.
 
@@ -14,7 +14,7 @@ De plus l'usage de const permet de "sécuriser" certaines données du fait de so
 
 Faire attention lorsqu'on manipule des tableaux et des objets en Javascript, la notion d'héritage est très importante car on peut modifier/effacer tout ou partie d'une tableau/objet définitivement si l'on ne prend pas garde.
 
-Si l'on souhaite intéragir sur un tableau ou un objet sans modifier l'original il faut penser à ne pas y faire référence directement
+Si l'on souhaite interagir sur un tableau ou un objet sans modifier l'original il faut penser à ne pas y faire référence directement
 
     exemple:
     const initialUsers = ["pierre", "paul", "jacques"];
@@ -66,7 +66,7 @@ la version javascript classique(oldschool) pour écrire une fonction est la suiv
         console.log("hello");
     }
 
-nous priviligierons l'utilisation de la version ES6 Javascript pour l'écriture des fonctions qui consiste en l'utilisation de constantes auxquelles nous attribuerons nos fonctions.
+nous privilégierons l'utilisation de la version ES6 Javascript pour l'écriture des fonctions qui consiste en l'utilisation de constantes auxquelles nous attribuerons nos fonctions.
 
     exemple:
     const sayHello = () => {
@@ -91,7 +91,7 @@ on peut alors simplifier l'écriture de la fonction en retirant le "return" ains
     const greetings = sayHello("paul");
     console.log(greetings);
 
-cela aura exactement le même résultat, car de manière implicite si une seule ligne de code est présente dans une fonction de renvoi de données cela implique par défaut que son résultat soit renvoyé(return), il n'est donc pas nécéssaire d'écrire la version longue de la fonction.
+cela aura exactement le même résultat, car de manière implicite si une seule ligne de code est présente dans une fonction de renvoi de données cela implique par défaut que son résultat soit renvoyé(return), il n'est donc pas nécessaire d'écrire la version longue de la fonction.
 
 ### **<u>Deconstruct</u>**
 Le "Désassemblage" de données est un moyen efficace de simplifier son code lorsque l'on cherche à récupérer les informations contenues dans une tableau/objet.
@@ -170,14 +170,14 @@ la constante _filterUser_ contenant la méthode _filter_ nous permet de lire le 
 ## II. LES BASES
 
 ### **<u>Pourquoi apprendre React??</u>**
-React est un framework, un ensemble de librairies jasvascript, qui permet de créer des applications web, ou autres, de manière centralisé en langage javascript sans avoir à utiliser des fichiers HTML/CSS.
+React est un framework, un ensemble de librairies JavaScript, qui permet de créer des applications web, ou autres, de manière centralisé en langage javascript sans avoir à utiliser des fichiers HTML/CSS.
 Tout est centralisé dans un seul fichier Javascript qui va s'occuper de générer l'ensemble du code (HTML/CSS) en utilisant la syntaxe JSX spécifique à React.
 
 De plus, React permet de structurer/découper son code avec ce que l'on appel des "components" ou "modules".
 
 Pour schématiser, un fichier javascript pourra faire référence à une multitude d'autres fichiers javascript afin de construire selon nos envies et besoin des projets web. 
 
-Un fichier js pourra construire la partie "Head" de notre projet web, un autre la partie "Body" qui elle même contiendra des appels vers d'autres fichiers js pour le "Header", "Main", "Footer" et ainsi desuite en cascade.
+Un fichier js pourra construire la partie "Head" de notre projet web, un autre la partie "Body" qui elle même contiendra des appels vers d'autres fichiers js pour le "Header", "Main", "Footer" et ainsi de suite en cascade.
 
 On peut donc construire toutes les parties d'un site web par example en petits _components_ interchangeables à souhait.
 
@@ -239,7 +239,7 @@ ci dessous exemple avec 1 fonction incluant plusieurs éléments:
 ![](reactfunction.jpg)
 ![](reactfunction2.jpg)
 
-A partir de là, on s'aperçoi qu'on peut utiliser uniquement javascript pour créer du code HTML, mais aussi CSS, tout en utilisant toutes les fonctionnalités de Javascript comme par exemple la création de variables à insérer dans notre code:
+A partir de là, on s'aperçois qu'on peut utiliser uniquement javascript pour créer du code HTML, mais aussi CSS, tout en utilisant toutes les fonctionnalités de Javascript comme par exemple la création de variables à insérer dans notre code:
 
 ici là constante **time**
 ![](reactvar.jpg)
@@ -252,20 +252,20 @@ ici avec du style comme en css
 ### **<u>Introduction à JSX</u>**
 JSX est une extension syntaxique de JavaScript et produit des « éléments » React. 
 
-extension syntaxique = même langage mais écrit différement, généralement de sorte à être plus simple à lire.
+extension syntaxique = même langage mais écrit différemment, généralement de sorte à être plus simple à lire.
 
-Oui mais qui dit écriture différente, dit forcémment besoin d'interpréter cette nouvelle façon d'écrire. Et pour cela on va faire appel à **BABEL** qui est un compileur/traducteur javascript. Il va s'occuper de récupérer notre code JSX et de le traduire en code Javascript vanilla, ce même code prise de tête que l'on a pu voir dans la partie précédente.  
+Oui mais qui dit écriture différente, dit forcément besoin d'interpréter cette nouvelle façon d'écrire. Et pour cela on va faire appel à **BABEL** qui est un compileur/traducteur javascript. Il va s'occuper de récupérer notre code JSX et de le traduire en code Javascript vanilla, ce même code prise de tête que l'on a pu voir dans la partie précédente.  
 
 Alors passons à JSX pour ré-écrire la fonction _app_ que nous avons créer en Javascript.
 ![](reactjsx.jpg)
 
 On peut voir que cela s'apparente à peu de choses à du code HTML, code qui nous est familier.
 
-La différence vient dans la syntaxe utilisé pour ajouter des variables qui nécéssite l'introduction d'accolades {} ainsi que certaines nom de propriétés en Css qui diffèrent comme par example _font-size_(CSS) qui s'écrit _fontSize_ en JSX.
+La différence vient dans la syntaxe utilisé pour ajouter des variables qui nécessite l'introduction d'accolades {} ainsi que certaines nom de propriétés en Css qui diffèrent comme par example _font-size_(CSS) qui s'écrit _fontSize_ en JSX.
 
 Une autre chose qui est extrêmement pratique, c'est l'affectation de fonctions directement depuis le code JSX, c'est à dire la création de fonctions que l'on peut ensuite affecter directement à des éléments JSX.
 
-Ici un exemple de fenêtre d'alerte quand on click sur le boutton:
+Ici un exemple de fenêtre d'alerte quand on click sur le bouton:
 ![](reactjsxalertfunction.jpg)
 il suffit d'indiquer le paramètre **onClick** dans l'élément JSX _button_ et de lui attribuer en valeur la fonction que nous avons créé, ici **alertHandler**.
 
@@ -276,9 +276,9 @@ Pour faire simple, on prend du HTML du CSS et du Javascript que l'on met dans un
 
 Avec cela on peut ainsi créer des projets complexe en ajoutant petit à petit des components les uns aux autres dans un seul et même fichier Javascript.
 
-pour schématiser, c'est comme une structure en LEGO dont chaque pièce représente un component. On peut modeler la srtucture à souhait et y ajouter ou retirer des pièces en fonction du résultat final que l'on souhaite lui donner.
+pour schématiser, c'est comme une structure en LEGO dont chaque pièce représente un component. On peut modeler la structure à souhait et y ajouter ou retirer des pièces en fonction du résultat final que l'on souhaite lui donner.
 
-Un component cela peut être une barre de navigation, un bloc video, un espace commentaire, un section d'un site web, un bouton avec une fonctionnalité spécifique, etc...
+Un component cela peut être une barre de navigation, un bloc vidéo, un espace commentaire, un section d'un site web, un bouton avec une fonctionnalité spécifique, etc...
 
 On peut les réutiliser plusieurs fois, facile à mettre à jour, modulables.
 
@@ -336,7 +336,7 @@ C'est tout ce qu'il faut principalement se rappeler de l'utilisation de React po
 
 2- installer NodeJS (https://nodejs.org/en/download/)
 
-3- Controllez que node a correctement été installé en utilisant la commande ci dessous dans votre terminal VSC. Si en réponse vous obtenez un numéro de version c'est que nodeJS est bien installé, sinon c'est qu'il ne l'est pas. Retournez à l'étape 2 en cas d'échec de l'installation.
+3- Contrôlez que node a correctement été installé en utilisant la commande ci dessous dans votre terminal VSC. Si en réponse vous obtenez un numéro de version c'est que nodeJS est bien installé, sinon c'est qu'il ne l'est pas. Retournez à l'étape 2 en cas d'échec de l'installation.
    
     node -v
 
@@ -350,16 +350,16 @@ C'est tout ce qu'il faut principalement se rappeler de l'utilisation de React po
 ### **<u>Que contient ce dossier de base?</u>**
 1- README.md: C'est un fichier écrit en Markdown, langage de balisage, qui à pour but de formater du texte à une fin informative. C'est dans ce fichier que l'on insère tout ce qu'il faut savoir sur le projet.
 
-2- package.json: Est un fichier qui récapitule les informations technique du projet auxquel il est rattaché. C'est dans ce fichier que l'on retrouve la liste des dépendances, des scripts, du nom du projet, de sa version, etc...
-Si l'on est en posséssion de ce fichier dans le cadre d'une copie d'un projet tier, il suffit simplement de taper dans votre terminal la commande:
+2- package.json: Est un fichier qui récapitule les informations technique du projet auxquels il est rattaché. C'est dans ce fichier que l'on retrouve la liste des dépendances, des scripts, du nom du projet, de sa version, etc...
+Si l'on est en possession de ce fichier dans le cadre d'une copie d'un projet tiers, il suffit simplement de taper dans votre terminal la commande:
 
     npm install
 
 pour que le contenu complet du projet soit télécharger sur votre machine dans le dossier de votre choix.
 
-3- package-lock.json: Est un fichier qui prend un instantané du projet lors de sa création ce qui permet de conserver indéfiniement la version original du projet avec toutes ses dépendances dans leur version exact au moment de leur création pour ce projet. Cela permet ainsi que pouvoir revenir à la structure originale même des années après sa création. C'est un fichier qui nous assure que quoi qu'il arrive le projet fonctionnera.
+3- package-lock.json: Est un fichier qui prend un instantané du projet lors de sa création ce qui permet de conserver indéfiniment la version original du projet avec toutes ses dépendances dans leur version exact au moment de leur création pour ce projet. Cela permet ainsi que pouvoir revenir à la structure originale même des années après sa création. C'est un fichier qui nous assure que quoi qu'il arrive le projet fonctionnera.
 
-4- .gitignore: Est un fichier qui nous permet d'indiquer à git tous les dossiers et fichiers que l'on souhaite ignorer lors du transfer de fichiers vers notre github. Tout ce qui est noté à l'intérieur de gitignore sera ignoré lors d'un push vers github. 
+4- .gitignore: Est un fichier qui nous permet d'indiquer à git tous les dossiers et fichiers que l'on souhaite ignorer lors du transfert de fichiers vers notre github. Tout ce qui est noté à l'intérieur de gitignore sera ignoré lors d'un push vers github. 
 Généralement, on ignore les fichiers et dossiers de gros volumes tels que les dossiers "node_modules" ou "img" qui peuvent atteindre des centaines de Mo, mais aussi les fichiers config qui pourraient contenir des mots de passe ou des informations trop sensibles sur votre projet.
 
 5- public: Ce dossier contient notre fichier index.html, c'est le dossier ou l'on pourra aussi ajouter des images/icons ainsi que le fichier "robots.txt" pour le SEO.
@@ -394,7 +394,7 @@ En JSX:
 ### **<u>Import / Export Quésaco?</u>**
 Avec ce projet, Webpack est inclus dans les dépendances, ce qui veux dire que nous pouvons créer nos "components" dans des fichiers séparés.
 
-Si l'on veux inclure un fichier/component/package dans un autre fichiers, disont notre fichiers _App_, il faut utiliser le terme **import**.
+Si l'on veux inclure un fichier/component/package dans un autre fichiers, disons notre fichiers _App_, il faut utiliser le terme **import**.
 
 Exemple:
 
@@ -422,7 +422,7 @@ Exemple d'import de notre fonction Box dans un fichier App.js:
     import ReactDOM from "react-dom";  (ceci est un package)
     import Box from "./Box";  (ceci est un component)
 
-et pour affichier notre fonction dans le navigateur, il suffit de l'appeler depuis notre fichier App.js
+<!-- et pour afficher notre fonction dans le navigateur, il suffit de l'appeler depuis notre fichier App.js -->
 
     ReactDOM.render(<Box />, document.getElementByID("root"));
     
@@ -461,3 +461,31 @@ son utilisation à l'export se fera comme vu précédemment en l'important dans 
     }
 
     export default App;
+
+### **<u>Paramétrer son VSC pour React</u>**
+Cette partie n'est absolument pas obligatoire, c'est un exemple et une recommandation, rien de plus.
+
+Comme VSC est notre outils pour coder nos projet il vaut mieux le paramétrer afin de réduire un maximum notre difficulté. Comme le répétait un de mes formateurs, le développeur est un fainéant et il n'aime pas avoir à dépenser son énergie. Donc autant être le meilleur fainéant possible et utiliser les extensions qui vont faire une bonne partie du travail à notre place!!!
+
+Voici donc une liste d'étapes à suivre qui pourront s'avérer utiles! 
+
+1- Installer **Material Theme**: Pour choisir un theme vous correspondant, dark, light, colored, etc...
+
+Install: View > Command Palette > Preferences Color Theme + votre choix
+
+2- Installer **Material Icon Theme**: Ce sont les petits icons qui apparaissent dans la barre d'exploration (la partie gauche) de votre fenêtre. il y'aura ainsi des icons pour html/css/js/nodeJs/Git/etc...
+
+3- Paramétrer Le Langage à utiliser en cliquant en bas à droite sur le nom du langage utilisé. Cela devrait être logiquement Javascript si vous avez créé un fichier Js. Une fois cliqué, entrez "React" dans la barre de recherche qui est apparu et sélectionnez **Javascript React**
+
+Il existe une solution pour automatiser le passage du langage Javascript à Javascript React chaque fois que vous créez un nouveau fichier Js:
+
+Roue de paramètres(en bas à gauche) puis: Settings > clic sur petit icon en former de fichier en haut a droite (Edit settings XML).
+
+Le fichier "Settings.json" va s'ouvrir et c'est dans ce fichier entre les les accolades qu'il va falloir copier/coller cette ligne de code:
+
+    "files.associations": {
+        "*.js": "javascriptreact"
+    },
+
+Une fois que c'est fait, il suffit alors de sauvegarder et éventuellement de redémarrer VSC.
+
