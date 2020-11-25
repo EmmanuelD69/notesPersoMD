@@ -489,3 +489,28 @@ Le fichier "Settings.json" va s'ouvrir et c'est dans ce fichier entre les les ac
 
 Une fois que c'est fait, il suffit alors de sauvegarder et éventuellement de redémarrer VSC.
 
+## III. CONCEPTS CLES
+
+### **<u>Comment structurer son code React</u>**
+
+Plutôt que de coder l'ensemble d'un projet dans un seul fichier App.js, il est préférable de le structurer en un ensemble de fichiers de plus petite taille et de les important dans le fichier App.js.
+
+Par exemple, on peut décomposer notre site / appli en plusieurs éléments distincts:
+
+    1- Header
+    2- Section Gauche
+    3- Section Centrale
+    4- Section Droite
+    5- Footer
+
+![](structure.jpg)
+
+Chaque élément peut lui même être décomposé en sous éléments, c'est là que nous pouvons développer nos components et les ajouter les uns aux autres de façon à ce qu'au final nous ayons 1 élément structuré. 
+
+Par exemple prenons la section gauche contenant une barre de navigation, on peut la décomposer de la manière suivante:
+
+![](componentnav.jpg)
+
+ou encore, la partie centrale qui peut inclure un component "Tweet" qui est reproduit à chaque nouveau "Tweet".
+
+![](ReactStructuring.jpg)
