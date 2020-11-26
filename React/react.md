@@ -588,7 +588,7 @@ Puis on peut commencer à implémenter son code:
     const Tweet = () => {
         return(
             <h2>Auteur</h2>
-            <h3>Message</h3>
+            <h3>Ceci est un message</h3>
             <button>Delete</button>
             <button>Like</button>
         );
@@ -604,7 +604,7 @@ En résumé il faut une DIV pour contenir notre code JSX, comme ci dessous:
         return(
             <div>
                 <h2>Auteur</h2>
-                <h3>Message</h3>
+                <h3>Ceci est un message</h3>
                 <button>Delete</button>
                 <button>Like</button>
             </div>
@@ -617,7 +617,7 @@ on ne peux pas faire:
         return(
             <div>
                 <h2>Auteur</h2>
-                <h3>Message</h3>
+                <h3>Ceci est un message</h3>
                 <button>Delete</button>
                 <button>Like</button>
             </div>
@@ -633,7 +633,7 @@ Pour rappel, ce qui se passe en arrière plan en Javascript:
 
     React.createElement("div", null, [
         React.createElement("h2", null, "Auteur");
-        React.createElement("h3", null, "Message");
+        React.createElement("h3", null, "Ceci est un message");
         React.createElement("button", null, "Delete");
         React.createElement("button", null, "Like");
     ])
@@ -650,7 +650,7 @@ Et pour terminer, nous allons donner un nom de classe à notre div(anneau):
         return(
             <div className="Tweet">
                 <h2>Auteur</h2>
-                <h3>Message</h3>
+                <h3>Ceci est un message</h3>
                 <button>Delete</button>
                 <button>Like</button>
             </div>
@@ -682,3 +682,5 @@ Retour sur App.js:
 Petit test visuel avec **npm start** dans la console de notre terminal VSC:
 
 ![](./img/testapptweet.jpg)
+
+Wow Génial, c'est méga moche mais on a notre Auteur, message, et nos boutons! C'est un bon début :)
