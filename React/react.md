@@ -684,3 +684,33 @@ Petit test visuel avec **npm start** dans la console de notre terminal VSC:
 ![](./img/testapptweet.jpg)
 
 Wow Génial, c'est méga moche mais on a notre Auteur, message, et nos boutons! C'est un bon début :)
+
+Bien Bien, mais il est où notre Props dans tout ça?
+
+On y arrive, chaque chose en son temps, pour le moment on a un component Tweet qui affiche un auteur, un message et donne la possibilité d'effacer ou de liker le tweet. 
+
+Mais d'où il vient ce tweet??? il faut bien le créer quelque part, non?
+
+Et comment on fait pour créer un tweet? 
+
+bha on fait un component CreateTweet bien sûr! Donc rebelote: 
+
+1- Création du fichier CreateTweet.js dans notre dossier _components_, 
+
+2- Import de React,
+
+3- Création de la fonction CreateTweet et implémentation des fonctionnalités en JSX,
+
+4- Export de notre nouveau component CreateTweet,
+
+![](./img/compoCreateTweet.jpg)
+
+5- Import de notre component CreateTweet dans App.js,
+
+6- Intégration du component CreateTweet dans la fonction App,
+
+![](./img/compoApp.jpg)
+
+7- Test visuel de notre projet avec npm start
+
+![](./img/ReactAppVisu.jpg)
