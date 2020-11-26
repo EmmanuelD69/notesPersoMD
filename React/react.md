@@ -797,3 +797,18 @@ Il ne nous reste plus qu'à utiliser les propriétés de l'objet props afin d'af
 Tada!! petit _npm start_ et le tour est joué.
 
 ![](./img/propsVisu.jpg)
+
+Il est possible de simplifier encore plus la chose en utilisant en argument de la fonction Tweet l'extraction des propriétés de l'objet props de la manière suivante:
+
+    const Tweet = ({auteur, message}) => {
+        return(
+            <div className="tweet">
+                <h2>{auteur}</h2>
+                <h3>{message}</h3>
+                <button>Delete</button>
+                <button>Like</button>
+            </div>
+        );
+    };
+
+Et par conséquent il n'est plus nécessaire d'utiliser le terme "props" pour obtenir les valeurs des propriétés de la fonction Tweet.
