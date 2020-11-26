@@ -191,7 +191,7 @@ On peut donc construire toutes les parties d'un site web par example en petits _
 ### **<u>Fonctionnement de React? Ca ressemble à quoi?</u>**
 Dans un premier temps nous allons d'abord regarder à quoi ressemble du code Javascript "vanille":
 
-![](vanillajs.jpg)
+![](./img/vanillajs.jpg)
 
 Comme on peut le voir, cela consiste en un échange entre 3 fichiers distinct, un fichier HTML pour la structure, un fichier CSS pour le styling et enfin un fichier JS pour l'interactivité.
 
@@ -233,19 +233,19 @@ Ce code va nous permettre de _générer_ l'élément h1 et son contenu, mais pou
 <span style="color:red">b</span>: correspond la localisation au sein de notre code contenu dans le fichier _index.html_ ou l'on va insérer le code généré par <span style="color:red">a</span>
 
 ci dessous exemple avec 1 élément:
-![](react.jpg)
+![](./img/react.jpg)
 
 ci dessous exemple avec 1 fonction incluant plusieurs éléments:
-![](reactfunction.jpg)
-![](reactfunction2.jpg)
+![](./img/reactfunction.jpg)
+![](./img/reactfunction2.jpg)
 
 A partir de là, on s'aperçois qu'on peut utiliser uniquement javascript pour créer du code HTML, mais aussi CSS, tout en utilisant toutes les fonctionnalités de Javascript comme par exemple la création de variables à insérer dans notre code:
 
 ici là constante **time**
-![](reactvar.jpg)
+![](./img/reactvar.jpg)
 
 ici avec du style comme en css
-![](reactstyle.jpg)
+![](./img/reactstyle.jpg)
 
 <span style="color:red">Pas de panique, ce que l'on essai de comprendre ici est la logique de fonctionnement de React, le code, lui, ressemble à tout autre chose beaucoup plus simple.  On voit ici la mécanique qui se passe en arrière plan, ce n'est pas la façon utilisé pour écrire du code en React.</span>
 
@@ -257,7 +257,7 @@ extension syntaxique = même langage mais écrit différemment, généralement d
 Oui mais qui dit écriture différente, dit forcément besoin d'interpréter cette nouvelle façon d'écrire. Et pour cela on va faire appel à **BABEL** qui est un compileur/traducteur javascript. Il va s'occuper de récupérer notre code JSX et de le traduire en code Javascript vanilla, ce même code prise de tête que l'on a pu voir dans la partie précédente.  
 
 Alors passons à JSX pour ré-écrire la fonction _app_ que nous avons créer en Javascript.
-![](reactjsx.jpg)
+![](./img/reactjsx.jpg)
 
 On peut voir que cela s'apparente à peu de choses à du code HTML, code qui nous est familier.
 
@@ -266,7 +266,7 @@ La différence vient dans la syntaxe utilisé pour ajouter des variables qui né
 Une autre chose qui est extrêmement pratique, c'est l'affectation de fonctions directement depuis le code JSX, c'est à dire la création de fonctions que l'on peut ensuite affecter directement à des éléments JSX.
 
 Ici un exemple de fenêtre d'alerte quand on click sur le bouton:
-![](reactjsxalertfunction.jpg)
+![](./img/reactjsxalertfunction.jpg)
 il suffit d'indiquer le paramètre **onClick** dans l'élément JSX _button_ et de lui attribuer en valeur la fonction que nous avons créé, ici **alertHandler**.
 
 Et pour finir, ce que nous venons de coder en JSX est une fonction contenant un ensemble de codes structuré qui à une finalité précise, on appel cela un **component** ou encore un module.
@@ -503,14 +503,107 @@ Par exemple, on peut décomposer notre site / appli en plusieurs éléments dist
     4- Section Droite
     5- Footer
 
-![](structure.jpg)
+![](./img/structure.jpg)
 
 Chaque élément peut lui même être décomposé en sous éléments, c'est là que nous pouvons développer nos components et les ajouter les uns aux autres de façon à ce qu'au final nous ayons 1 élément structuré. 
 
 Par exemple prenons la section gauche contenant une barre de navigation, on peut la décomposer de la manière suivante:
 
-![](componentnav.jpg)
+![](./img/componentnav.jpg)
 
 ou encore, la partie centrale qui peut inclure un component "Tweet" qui est reproduit à chaque nouveau "Tweet".
 
-![](ReactStructuring.jpg)
+![](./img/ReactStructuring.jpg)
+
+### **<u>Props Quésaco?</u>**
+C'est une façon de transmettre des infos/data d'un component vers un autre. Donc si vous voulez envoyer des datas d'un component React vers un autre component React vous le ferez via des **Props**.
+
+Prenons pour exemple notre Component React App:
+
+    import React from "react";
+
+    function App(){
+        return(
+            <div>
+                <h2>Hello React</h2>
+            </div>
+        );
+    }
+
+    export default App;
+
+C'est lui qui va englober tous les autres components que l'on va rajouter au fur et à mesure de la création de notre projet React. C'est ce component que l'on va lancer avec **npm start**.
+
+Pour le moment il est super simple et ne contient qu'un titre _"Hello React"_. Nous voulons ajouter un component "Tweet" pour étoffer notre projet.
+
+Dans un premier temps, pour plus de lisibilité, nous allons ajouter un dossier dédié aux components que nous allons créer dans le dossier "Src". Puis nous allons ajouter notre component "Tweet" en créant le fichier Tweet.js.
+
+![](./img/componentsfolder.jpg)
+
+Première étape pour créer notre component Tweet, on indique que l'on importe notre outil de base pour coder en React.
+
+    import React from "react";
+
+Ensuite on déclare notre component par l'intermédiaire d'une fonction, de la façon qui vous conviendra le mieux:
+
+    Méthode traditionnelle:
+    function Tweet() {
+
+    }
+    ou
+    Méthode ES6 avec Arrow function:
+    const Tweet = () => {
+
+    }
+
+Et enfin pour terminer on rend disponible le component en l'exportant:
+
+    export default Tweet;
+
+Nous avons ici la structure de base du code pour créer un component, on peut maintenant lui donner du contenu et donc une/des fonctionnalités.
+
+Alors un Tweet qu'est ce que cela contient?
+
+1- Un nom d'auteur,
+
+2- Un message,
+
+3- Un bouton "Delete",
+
+4- Un bouton "Like",
+
+Il est temps de mettre cela en place dans notre fonction Tweet, pour cela on va tout d'abord être sûr qu'elle accomplie sa fonction en "retournant" son contenu:
+
+    const Tweet = () => {
+        return(
+
+        )
+    }
+
+Puis on peut commencer à implémenter son code:
+
+    const Tweet = () => {
+        return(
+            <h2>Auteur</h2>
+            <h3>Message</h3>
+            <button>Delete</button>
+            <button>Like</button>
+        )
+    }
+
+Le problème ici est que nous allons avoir un message d'erreur, pourquoi?
+
+Car à partir du moment où l'on créé un component avec du code JSX, il faut obligatoirement que nos éléments JSX Html soient écrient à l'intérieur d'un élément JSX HTML Container parent. Encapsulé dans un élément parent.
+
+En résumé il faut une DIV pour contenir notre code JSX, comme ci dessous:
+
+    const Tweet = () => {
+        return(
+            <div>
+                <h2>Auteur</h2>
+                <h3>Message</h3>
+                <button>Delete</button>
+                <button>Like</button>
+            </div>
+        );
+    };
