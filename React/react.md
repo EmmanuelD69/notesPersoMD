@@ -547,11 +547,14 @@ Première étape pour créer notre component Tweet, on indique que l'on importe 
 Ensuite on déclare notre component par l'intermédiaire d'une fonction, de la façon qui vous conviendra le mieux:
 
     Méthode traditionnelle:
+
     function Tweet() {
 
     }
+
     ou
     Méthode ES6 avec Arrow function:
+
     const Tweet = () => {
 
     }
@@ -588,8 +591,8 @@ Puis on peut commencer à implémenter son code:
             <h3>Message</h3>
             <button>Delete</button>
             <button>Like</button>
-        )
-    }
+        );
+    };
 
 Le problème ici est que nous allons avoir un message d'erreur, pourquoi?
 
@@ -607,3 +610,75 @@ En résumé il faut une DIV pour contenir notre code JSX, comme ci dessous:
             </div>
         );
     };
+
+on ne peux pas faire:
+
+    const Tweet = () => {
+        return(
+            <div>
+                <h2>Auteur</h2>
+                <h3>Message</h3>
+                <button>Delete</button>
+                <button>Like</button>
+            </div>
+            <div>
+                <h1>Hello</h1>
+            </div>
+        );
+    };
+
+Non non, juste 1 seule Div pour l'ensemble!
+
+Pour rappel, ce qui se passe en arrière plan en Javascript:
+
+    React.createElement("div", null, [
+        React.createElement("h2", null, "Auteur");
+        React.createElement("h3", null, "Message");
+        React.createElement("button", null, "Delete");
+        React.createElement("button", null, "Like");
+    ])
+
+Et si vous n'avez pas encore compris... je ne dirais qu'une seule chose:
+
+    Un anneau pour les gouverner tous!
+
+Oui... je sais je m'égare... mais j'espère que maintenant vous avez bien compris le principe :)
+
+Et pour terminer, nous allons donner un nom de classe à notre div(anneau):
+
+    const Tweet = () => {
+        return(
+            <div className="Tweet">
+                <h2>Auteur</h2>
+                <h3>Message</h3>
+                <button>Delete</button>
+                <button>Like</button>
+            </div>
+            <div>
+                <h1>Hello</h1>
+            </div>
+        );
+    };
+
+Voila, on vient de créer un component Tweet et on peut donc l'importer dans notre component App pour l'intégrer dans notre fonction App.
+
+Retour sur App.js:
+
+    import React from "react";
+    //Import components
+    import Tweet from "./components/Tweet";
+
+    function App(){
+        return(
+            <div>
+                <h2>Hello React</h2>
+                <Tweet />
+            </div>
+        );
+    }
+
+    export default App;
+
+Petit test visuel avec **npm start** dans la console de notre terminal VSC:
+
+![](./img/testapptweet.jpg)
