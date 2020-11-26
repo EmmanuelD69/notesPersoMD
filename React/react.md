@@ -714,3 +714,86 @@ bha on fait un component CreateTweet bien sûr! Donc rebelote:
 7- Test visuel de notre projet avec npm start
 
 ![](./img/ReactAppVisu.jpg)
+
+Maintenant pour résumer où nous en sommes avant de parler des Props voici un schéma structurel de notre petit projet React:
+
+![](./img/compoAppMap.jpg)
+
+C'est maintenant que l'on a un cadre de travail qu'on va pouvoir évoquer les Props. Nous avons besoin de données pour pouvoir créer nos Tweets, il nous faut notamment le nom de l'auteur du Tweet ainsi que son Message.
+
+Rien de très compliqué, il nous suffit pour cela de revenir sur du Javascript de base avec création de variables et attributions de valeurs.
+
+Petit Rappels:
+
+1- Dans un component, le code contenu en dehors des parenthèses () du return est du Javascript normal.
+
+2- Dans un component, le code contenu entre parenthèses () après le return est du JSX.
+
+On créé donc nos variables avec leurs valeurs avant d'entrer dans le return comme sur l'image ci dessous.
+
+![](./img/rappels.jpg)
+
+Maintenant la question est de savoir comment on fait pour utiliser nos datas et les faire passer dans les components qui en ont besoin?
+
+Cela se fait en 2 étapes:
+
+### <u>1- Déclaration des variables et des propriétés dans le fichier App.js</u>
+
+Imaginer que vous attribuez des propriétés aux components que vous intégrez dans le return de la fonction App(). Comme pour une balise HTML qui prendrait des propriétés (style / href / etc..), les components peuvent prendre aussi des propriétés qui correspondent aux variables créées en amont dans la fonction.
+
+La syntaxe pour déclarer ces propriétés est la suivante:
+
+    label = {variable}
+
+en essayant de garder de préférence une correspondance entre nom du label et le nom de la variable.
+
+prenons le cas du component Tweet:
+
+    function App() {
+        /* Je créé mes variables ici */
+        const auteur = "EmmanuelDev";
+        const message = "Coucou, React c'est super cool!";
+
+        return (
+        <div>
+            <h1>Hello React test</h1>
+            <CreateTweet />
+            /* J'attribue mes propriétés au component Tweet */
+            <Tweet auteur={auteur} message={message} />
+        </div>
+        );
+    };
+
+### <u>2- Usage l'argument **props** et lecture des valeurs qu'il contient à partir de Tweet.js</u>
+
+Afin de connecter les propriétés attribuées au component Tweet depuis App.js vers Tweet.js, il faut attribuer à la fonction Tweet l'argument **props**.
+
+    const Tweet = (props) => {
+        Code....
+    }
+
+si l'on fait un console.log de props on obtient un objet contenant les variables que nous avons créées dans notre fonction App() située dans le fichier App.js.
+
+    console.log(props);
+
+    Object:
+        auteur: "EmmanuelDev"
+        message: "Coucou, React c'est super cool!"
+
+
+Il ne nous reste plus qu'à utiliser les propriétés de l'objet props afin d'afficher les informations souhaitées.
+
+    const Tweet = (props) => {
+        return(
+            <div className="tweet">
+                <h2>{props.auteur}</h2>
+                <h3>{props.message}</h3>
+                <button>Delete</button>
+                <button>Like</button>
+            </div>
+        );
+    };
+
+Tada!! petit _npm start_ et le tour est joué.
+
+![](./img/propsVisu.jpg)
