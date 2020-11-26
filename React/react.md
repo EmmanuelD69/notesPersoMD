@@ -743,9 +743,9 @@ Imaginer que vous attribuez des propriétés aux components que vous intégrez d
 
 La syntaxe pour déclarer ces propriétés est la suivante:
 
-    label = {variable}
+    description = {valeur}
 
-en essayant de garder de préférence une correspondance entre nom du label et le nom de la variable.
+en essayant de garder de préférence une correspondance entre la description et la valeur.
 
 prenons le cas du component Tweet:
 
