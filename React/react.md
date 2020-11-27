@@ -812,3 +812,25 @@ Il est possible de simplifier encore plus la chose en utilisant en argument de l
     };
 
 Et par conséquent il n'est plus nécessaire d'utiliser le terme "props" pour obtenir les valeurs des propriétés de la fonction Tweet.
+
+### <u>Usage de Props, est ce que je peux envoyer des props dans tous les sens?</u>
+
+NON, on ne peux pas utiliser les props dans tous les sens, on ne peux envoyer des datas que dans un sens, à partir du component parent vers le/les components enfants mais pas l'inverse!!! 
+
+![](./img/EnvoiProps.jpg)
+
+Cela fonctionne comme un système en cascade, imaginons maintenant que nous ayons une liste de Tweet, cette liste représenté par un component à part entier. 
+
+Voici à quoi ressemblerai alors notre projet React:
+
+![](./img/CascadingProps.jpg)
+
+Il nous faudrait créer un nouveau component que nous appellerions TweetList et qui serait alors le component Parent de plusieurs components Tweet enfant:
+
+![](./img/ReactTweetProject.jpg)
+
+Et pour finir, un petit _npm start_ pour visualiser le résultat dans le navigateur:
+
+![](./img/ReactAppVisu2.jpg)
+
+Voila pour les Props, c'est juste du cascading à partir du moment où l'on a compris le principe! 
