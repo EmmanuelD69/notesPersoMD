@@ -889,3 +889,33 @@ Notre code React ressemblera donc à cela:
 3- petit _npm start_ pour visualiser que cela fonctionne bien:
 
 ![](./img/clickEvent.jpg)
+
+### **<u>Event dont la fonction contient un argument</u>**
+Il y'a une subtilité à retenir lorsqu'on utilise des events qui déclenchent une fonction possédant une/des arguments.
+
+Prenons notre exemple précédent et rajoutons lui un argument _user_:
+
+    const sayHello = (username) => {
+            console.log(`coucou ${username}`);
+        } 
+
+on pourrait croire que la déclaration de notre event ressemblerai alors à:
+
+    <button> onClick={sayHello("username")}>Click</button>
+
+Mais cela n'aboutira pas au résultat souhaité, en effet, écrit de cette manière, on _"invoque"_ directement la fonction. Celle ci s'exécute avant même d'avoir cliqué sur le bouton et rend celui ci inactif.
+
+A partir du moment où l'on ajoute des parenthèses à une fonction, on l'invoque, on l'exécute directement.
+
+La question qui se pose est donc de trouver la parade pour pouvoir utiliser notre fonction sans l'exécuter directement mais uniquement quand on cliquera sur le bouton?
+
+Il nous suffit d'utiliser la fonction souhaitée en tant que "Callback" function.
+
+Pour cela on la précède simplement d'une fonction arrow () =>
+
+    <button> onClick={() => sayHello("EmmanuelDev")}>Click</button>
+
+Notre bouton est de nouveau opérationnel! 
+
+![](./img/clickEvent2.jpg)
+
