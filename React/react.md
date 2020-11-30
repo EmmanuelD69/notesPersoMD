@@ -834,3 +834,58 @@ Et pour finir, un petit _npm start_ pour visualiser le résultat dans le navigat
 ![](./img/ReactAppVisu2.jpg)
 
 Voila pour les Props, c'est juste du cascading à partir du moment où l'on a compris le principe! 
+
+### **<u>Events / Les Evènements</u>**
+Les évènements sont en Javascript le moyen qui nous est donné pour créer de l'interaction entre un site web et ses visiteurs. Nous avons ainsi à notre disposition tout un lexique d'actions que l'on peut intégrer à notre code javascript de sorte de créer des réactions de notre choix à des actions spécifiques d'un visiteur.
+
+Par exemple, cliquer sur un bouton peut démarrer une animation à l'écran, survoler une zone de l'écran peut faire apparaitre une fenêtre avec un message, appuyer sur une touche spécifique peut ajouter +1 à un compteur, faire un scrollup ou scrolldown peu déclencher une petite animation, etc... etc...
+
+En javascript la mise en place d'un Event se fait généralement de la manière suivante:
+
+    example avec un bouton:
+
+    button.addEventListener("click", () => {
+        console.log("coucou");
+    })
+
+Avec React, la façon de faire est la suivante:
+
+1- Création d'une fonction
+
+    const sayHello = () => {
+        console.log("coucou");
+    }
+
+
+2- Ajout d'une propriété "Event" sur un élément Html de notre code JSX.
+
+    <button> onClick={sayHello}>Click</button>
+
+C'est tout! 
+
+Notre code React ressemblera donc à cela:
+
+    function App() {
+        /* Je créé mes variables ici */
+        const auteur = "EmmanuelDev";
+        const message = "Coucou, React c'est super cool!";
+
+        /* ici on écrit nos fonctions */
+        const sayHello = () => {
+            console.log("coucou");
+        }
+
+        return (
+        <div>
+            <h1>Hello React test</h1>
+            <CreateTweet />
+            /* J'attribue mes propriétés au component Tweet */
+            <Tweet auteur={auteur} message={message} />
+            <button> onClick={sayHello}>Click</button>
+        </div>
+        );
+    };
+
+3- petit _npm start_ pour visualiser que cela fonctionne bien:
+
+![](./img/clickEvent.jpg)
