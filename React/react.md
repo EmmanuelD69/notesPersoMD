@@ -919,3 +919,7 @@ Notre bouton est de nouveau opérationnel!
 
 ![](./img/clickEvent2.jpg)
 
+### **<u>Liste des Events React</u>**
+Pour apprendre à utiliser les différents évènements avec React, voici un lien très utile qui comporte bon nombres d'Events et des infos complémentaires (en Anglais).
+
+https://flaviocopes.com/react-events/
