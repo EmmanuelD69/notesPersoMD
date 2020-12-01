@@ -923,3 +923,23 @@ Notre bouton est de nouveau opérationnel!
 Pour apprendre à utiliser les différents évènements avec React, voici un lien très utile qui comporte bon nombres d'Events et des infos complémentaires (en Anglais).
 
 https://flaviocopes.com/react-events/
+
+### **<u>Le paramètre d'Event (e)</u>**
+Quand on utilise les "Events" on à accès à un paramètre d'évènement **(e)**.
+
+En gros, si l'on fait un console log de ce paramètre d'évènement, cela nous donne une information sur ce qu'il vient de se produire.
+
+En un clic, vous pouvez ainsi connaitre sur quoi vous avez cliqué, quand, à quel endroit, etc... 
+
+Vous pouvez utiliser ce paramètre sur quasiment tous les Events.
+
+    Example avec une fonction "clickTest":
+    const clickTest = (e) => {
+        console.log(e);
+    }
+
+    <button> onClick={clickTest}>Click</button>
+
+Résultat:
+
+![](./img/e.jpg)
