@@ -341,7 +341,8 @@ C'est tout ce qu'il faut principalement se rappeler de l'utilisation de React po
     node -v
 
 4- Créer depuis VSC un dossier pour votre projet React.
-5- Aller sur https://create-react-app.dev/docs/getting-started/ et utiliser dans le terminal VSC les commandes de démarrage rapide pour installer un dossier contenant tous les modules de bases dont vous allez avoir besoin pour votre projet React (Babel, Webpackn, etc... ). En cas de problèmes se référer à la doc du site.
+
+5- Allez sur https://create-react-app.dev/docs/getting-started/ et utilisez dans le terminal VSC les commandes de démarrage rapide pour installer un dossier contenant tous les modules de bases dont vous allez avoir besoin pour votre projet React (Babel, Webpackn, etc... ). En cas de problèmes se référer à la doc du site.
 
     npx create-react-app nom_du_projet
     cd nom_du_projet
@@ -355,12 +356,12 @@ Si l'on est en possession de ce fichier dans le cadre d'une copie d'un projet ti
 
     npm install
 
-pour que le contenu complet du projet soit télécharger sur votre machine dans le dossier de votre choix.
+pour que le contenu complet du projet soit téléchargé sur votre machine dans le dossier de votre choix.
 
-3- package-lock.json: Est un fichier qui prend un instantané du projet lors de sa création ce qui permet de conserver indéfiniment la version original du projet avec toutes ses dépendances dans leur version exact au moment de leur création pour ce projet. Cela permet ainsi que pouvoir revenir à la structure originale même des années après sa création. C'est un fichier qui nous assure que quoi qu'il arrive le projet fonctionnera.
+3- package-lock.json: Est un fichier qui prend un instantané du projet lors de sa création ce qui permet de conserver indéfiniment la version original du projet avec toutes ses dépendances dans leur version exact au moment de leur création. Cela permet ainsi de pouvoir revenir à la structure originale même des années après sa création. C'est un fichier qui nous assure que quoi qu'il arrive le projet fonctionnera.
 
 4- .gitignore: Est un fichier qui nous permet d'indiquer à git tous les dossiers et fichiers que l'on souhaite ignorer lors du transfert de fichiers vers notre github. Tout ce qui est noté à l'intérieur de gitignore sera ignoré lors d'un push vers github. 
-Généralement, on ignore les fichiers et dossiers de gros volumes tels que les dossiers "node_modules" ou "img" qui peuvent atteindre des centaines de Mo, mais aussi les fichiers config qui pourraient contenir des mots de passe ou des informations trop sensibles sur votre projet.
+Généralement, on ignore les fichiers et dossiers de gros volumes tels que les dossiers "node_modules" et "img" qui peuvent atteindre des centaines de Mo, mais aussi les fichiers config qui pourraient contenir des mots de passe ou des informations trop sensibles à propos de votre projet.
 
 5- public: Ce dossier contient notre fichier index.html, c'est le dossier ou l'on pourra aussi ajouter des images/icons ainsi que le fichier "robots.txt" pour le SEO.
 
@@ -368,7 +369,7 @@ Généralement, on ignore les fichiers et dossiers de gros volumes tels que les 
 
     npm start
 
-Cela va ouvrir une nouvelle page dans votre navigateur et démarrer un serveur lecture en direct qui vous permettra de travailler et modifier en live sur votre projet.
+Cela va ouvrir une nouvelle page dans votre navigateur et démarrer un serveur en lecture direct qui vous permettra de travailler et modifier en live votre projet.
 
 ### **<u>Déclarer une classe en JSX, className vs class</u>**
 Comme nous l'avons vu plus haut en introduction à JSX, il s'agit d'une extension syntaxique de JavaScript qui produit des « éléments » React.
@@ -493,7 +494,7 @@ Une fois que c'est fait, il suffit alors de sauvegarder et éventuellement de re
 
 ### **<u>Comment structurer son code React</u>**
 
-Plutôt que de coder l'ensemble d'un projet dans un seul fichier App.js, il est préférable de le structurer en un ensemble de fichiers de plus petite taille et de les important dans le fichier App.js.
+Plutôt que de coder l'ensemble d'un projet dans un seul fichier Javascript, il est préférable de le structurer en un ensemble de fichiers de plus petites tailles et de les importer dans le fichier App.js
 
 Par exemple, on peut décomposer notre site / appli en plusieurs éléments distincts:
 
@@ -596,7 +597,7 @@ Puis on peut commencer à implémenter son code:
 
 Le problème ici est que nous allons avoir un message d'erreur, pourquoi?
 
-Car à partir du moment où l'on créé un component avec du code JSX, il faut obligatoirement que nos éléments JSX Html soient écrient à l'intérieur d'un élément JSX HTML Container parent. Encapsulé dans un élément parent.
+Car à partir du moment où l'on créé un component avec du code JSX, il faut obligatoirement que nos éléments JSX Html soient écrient à l'intérieur d'un élément JSX HTML _Container_. Encapsulé dans un élément parent.
 
 En résumé il faut une DIV pour contenir notre code JSX, comme ci dessous:
 
@@ -611,7 +612,7 @@ En résumé il faut une DIV pour contenir notre code JSX, comme ci dessous:
         );
     };
 
-on ne peux pas faire:
+on ne peux pas faire non plus:
 
     const Tweet = () => {
         return(
@@ -660,7 +661,7 @@ Et pour terminer, nous allons donner un nom de classe à notre div(anneau):
         );
     };
 
-Voila, on vient de créer un component Tweet et on peut donc l'importer dans notre component App pour l'intégrer dans notre fonction App.
+Voila, on vient de créer un component Tweet et on peut donc l'importer dans notre component global App pour l'intégrer à la fonction App.
 
 Retour sur App.js:
 
@@ -764,7 +765,7 @@ prenons le cas du component Tweet:
         );
     };
 
-### <u>2- Usage l'argument **props** et lecture des valeurs qu'il contient à partir de Tweet.js</u>
+### <u>2- Usage de l'argument **"props"** et lecture des valeurs qu'il contient à partir de Tweet.js</u>
 
 Afin de connecter les propriétés attribuées au component Tweet depuis App.js vers Tweet.js, il faut attribuer à la fonction Tweet l'argument **props**.
 
@@ -819,7 +820,7 @@ NON, on ne peux pas utiliser les props dans tous les sens, on ne peux envoyer de
 
 ![](./img/EnvoiProps.jpg)
 
-Cela fonctionne comme un système en cascade, imaginons maintenant que nous ayons une liste de Tweet, cette liste représenté par un component à part entier. 
+Cela fonctionne comme un système en cascade, imaginons maintenant que nous ayons une liste de Tweet, cette liste représentée par un component à part entier. 
 
 Voici à quoi ressemblerai alors notre projet React:
 
@@ -836,9 +837,9 @@ Et pour finir, un petit _npm start_ pour visualiser le résultat dans le navigat
 Voila pour les Props, c'est juste du cascading à partir du moment où l'on a compris le principe! 
 
 ### **<u>Events / Les Evènements</u>**
-Les évènements sont en Javascript le moyen qui nous est donné pour créer de l'interaction entre un site web et ses visiteurs. Nous avons ainsi à notre disposition tout un lexique d'actions que l'on peut intégrer à notre code javascript de sorte de créer des réactions de notre choix à des actions spécifiques d'un visiteur.
+Les évènements sont en Javascript le moyen qui nous est donné pour créer de l'interaction entre un site web et ses visiteurs. Nous avons ainsi à notre disposition tout un lexique d'actions que l'on peut intégrer à notre code javascript de sorte à créer les animations de notre choix en réaction aux actions de nos internautes.
 
-Par exemple, cliquer sur un bouton peut démarrer une animation à l'écran, survoler une zone de l'écran peut faire apparaitre une fenêtre avec un message, appuyer sur une touche spécifique peut ajouter +1 à un compteur, faire un scrollup ou scrolldown peu déclencher une petite animation, etc... etc...
+Par exemple, cliquer sur un bouton peut démarrer une animation à l'écran; survoler une zone de l'écran peut faire apparaitre une fenêtre avec un message; appuyer sur une touche spécifique peut ajouter +1 à un compteur; faire un scrollup ou scrolldown peu déclencher une petite animation, etc... etc...
 
 En javascript la mise en place d'un Event se fait généralement de la manière suivante:
 
@@ -891,9 +892,9 @@ Notre code React ressemblera donc à cela:
 ![](./img/clickEvent.jpg)
 
 ### **<u>Event dont la fonction contient un argument</u>**
-Il y'a une subtilité à retenir lorsqu'on utilise des events qui déclenchent une fonction possédant une/des arguments.
+Il y'a une subtilité à retenir lorsqu'on utilise des events qui déclenchent une fonction possédant un/des arguments.
 
-Prenons notre exemple précédent et rajoutons lui un argument _user_:
+Prenons notre exemple précédent et rajoutons lui un argument _username_:
 
     const sayHello = (username) => {
             console.log(`coucou ${username}`);
@@ -905,11 +906,11 @@ on pourrait croire que la déclaration de notre event ressemblerai alors à:
 
 Mais cela n'aboutira pas au résultat souhaité, en effet, écrit de cette manière, on _"invoque"_ directement la fonction. Celle ci s'exécute avant même d'avoir cliqué sur le bouton et rend celui ci inactif.
 
-A partir du moment où l'on ajoute des parenthèses à une fonction, on l'invoque, on l'exécute directement.
+A partir du moment où l'on ajoute des parenthèses après le nom d'une fonction, on l'invoque, on l'exécute directement.
 
 La question qui se pose est donc de trouver la parade pour pouvoir utiliser notre fonction sans l'exécuter directement mais uniquement quand on cliquera sur le bouton?
 
-Il nous suffit d'utiliser la fonction souhaitée en tant que "Callback" function.
+Il suffit d'utiliser la fonction souhaitée en tant que "Callback" function.
 
 Pour cela on la précède simplement d'une fonction arrow () =>
 
