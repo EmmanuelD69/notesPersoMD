@@ -944,3 +944,68 @@ Vous pouvez utiliser ce paramètre sur quasiment tous les Events.
 Résultat:
 
 ![](./img/e.jpg)
+
+### **<u>REACT dans tous ses états (state)</u>**
+Mise à part les "props", "states" est certainement l'un des concepts les plus important à comprendre. 
+
+Les States sont des "datas" au sein de votre appli. Prenons l'exemple de Youtube, votre nom de compte, le nombre de vidéo enregistrées en favoris, etc..
+
+D'une certaine façon on peut les voir comme des variables, des espaces de stockage qui conservent vos données. La différence qui existe entre les **_states_** et les **variables** est que lorsqu'une valeur change elle est immédiatement mise à jour au niveau de l'UI (user interface). Le changement se fait en direct à l'écran. L'UI est synchronisé avec les *"States"*.
+
+React est suffisamment malin pour changer le contenu d'un component en direct en fonction des modifications apportées aux **states** lui étant associés.
+
+Prenons un exemple simple avec notre fonction app():
+
+    function App() {
+        /* En dehors des () du return on code en Javascript normal */
+        const auteur = "EmmanuelDev";
+        const message = "Coucou, React c'est super cool!";
+        const sayHello = (e) => {
+            console.log(e);
+        }
+
+        return (
+        /* Entre les () du return on code en JSX */
+        <div>
+            <h1>Hello React</h1>
+            <CreateTweet />
+            <TweetList auteur={auteur} message={message} />
+            <button onClick={sayHello}>Click</button>
+        </div>
+        );
+    }; 
+
+on veux modifier notre titre "Hello React" en remplaçant le mot React par la valeur que contiendra une variable que l'on va appeler "name" au moment ou l'on va cliquer sur le bouton "click".  
+
+    function App() {
+        /* En dehors des () du return on code en Javascript normal */
+        let name = "React"
+        const auteur = "EmmanuelDev";
+        const message = "Coucou, React c'est super cool!";
+        const sayHello = (e) => {
+            name = "World";
+            console.log(name);
+        }
+
+        return (
+        /* Entre les () du return on code en JSX */
+        <div>
+            <h1>Hello {name}</h1>
+            <CreateTweet />
+            <TweetList auteur={auteur} message={message} />
+            <button onClick={sayHello}>Click</button>
+        </div>
+        );
+    }; 
+
+on se fait un petit **npm start** pour voir le résultat:
+
+![](./img/state1.jpg)
+
+Qu'est ce que l'on constate?
+
+Notre code fonctionne mais nous avons toujours le titre avec le mot "React" alors que le but était de le changer par le contenu de la variable **name** au moment où l'on clic sur le bouton "Click".
+
+Si l'on regarde dans notre console, on s'aperçoit que le mot _World_ est bien venu remplacer le mot React dans la variable **name** mais celui ci n'est pas venu le remplacer à l'écran quand on a cliqué sur le bouton "click".
+
+C'est à ce moment qu'entre en jeu l'usage du **state**.
