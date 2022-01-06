@@ -1009,3 +1009,9 @@ Notre code fonctionne mais nous avons toujours le titre avec le mot "React" alor
 Si l'on regarde dans notre console, on s'aperçoit que le mot _World_ est bien venu remplacer le mot React dans la variable **name** mais celui ci n'est pas venu le remplacer à l'écran quand on a cliqué sur le bouton "click".
 
 C'est à ce moment qu'entre en jeu l'usage du **state**.
+
+Comment faire pour afficher le mot World à la place de React avec **state**?
+
+Dans un premier temps il nous faut importer la fonctionnalité **state** qui dépend de React dans notre component App:
+
+    import React, {useState} from "react";
